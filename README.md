@@ -30,3 +30,21 @@ En local para correr el proyecto se debe hacer con el siguiente comando
 $ Rails server
 ```
 Por defecto la url es http://localhost:3000
+
+# Enviar cambios al servidor de GITHUB
+## Preparar envio
+```
+$ git status
+$ git add .
+$ git commit -m "NOMBRE DE LA TAREA REALIZADA"
+```
+## Actualizar repositorio
+Antes de enviar cualquier cambios al servidor primero debemos actualizar nuestro proyecto con los ultimos cambios
+```
+$ git fetch --all
+$ git pull origin master
+```
+## Enviar cambios a GITHUB
+```
+$ git push origin master
+```
