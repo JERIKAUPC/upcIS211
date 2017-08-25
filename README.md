@@ -7,12 +7,7 @@ $ cd upcIS211/
 ```
 
 ## En Cloud9
-- Primero ir al repositorio en el navegador https://github.com/oscarpasache/upcIS211
-- Hacer click en __FORK__ que se encuentra al lado derecho de __oscarpasache/upcIS211__
-- Aparecera un popup, se debe hacer click en su nombre de usuario
-- Esperar a que termine de clonar el proyecto...
-- Una vez completado el nombre de __oscarpasache/upcIS211__ debe ser __[MIUSUARIO]/upcIS211__
-- Ahora entrar a la web de c9.io
+- Entrar a la web de c9.io
 - Iniciar sesión y asociar su cuenta github con la de C9
 - Una vez completado en el dashboard de C9 ingresar a la opción __repositories__
 - Ahi deberia salir todos los repositorios que tienen en su cuenta de GITHUB incluido el repositorio __upcIS211__
