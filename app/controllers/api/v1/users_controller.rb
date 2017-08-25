@@ -13,6 +13,7 @@ module Api
                 render json: {status: 'SUCCESS', message: 'Loaded user', data:user},status: :ok
             end
 
+            # Método de creación de usuario
             def create
                 user = User.new(user_params)
                 if user.save
