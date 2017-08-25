@@ -33,6 +33,7 @@ module Api
             def user_params
                 params.permit(:name,:email,:password,:phone)
             end
+            #hola
         end
     end
 end
