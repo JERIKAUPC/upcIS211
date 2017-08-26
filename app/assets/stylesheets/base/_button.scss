@@ -1,0 +1,9 @@
+.btn{
+    color: $color-white;
+    display: inline-block;
+    background: $color-black;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 15px;
+    @include border-radius( 5px );
+}

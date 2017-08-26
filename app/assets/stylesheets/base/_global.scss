@@ -15,9 +15,8 @@ html {
 body {
     font-family: $font-family-base;
     font-size: $font-size-base;
-    line-height: $line-height-base;
-    color: $text-color;
-    background-color: $body-bg;
+    color: $color-black;
+    background-color: $color-white;
 }
 
 input,
@@ -30,14 +29,8 @@ textarea {
 }
 
 a {
-    color: $link-color;
+    color: $color-blue;
     text-decoration: none;
-
-    &:hover,
-    &:focus {
-        color: $link-hover-color;
-        text-decoration: $link-hover-decoration;
-    }
 }
 
 figure {
@@ -46,6 +39,12 @@ figure {
 
 img {
     vertical-align: middle;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .content{

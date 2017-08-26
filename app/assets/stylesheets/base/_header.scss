@@ -1,2 +1,43 @@
 header{
+    color          : $color-white;
+    height         : $height-header;
+    background     : $color-blue;
+    line-height    : $height-header;
+    
+    a{
+        color          : $color-white;
+    }
+    
+    .nav_menu{
+        float: right;
+        width: calc(100% - 100px);
+        
+        .nav{
+            a{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            
+            &.nav_left{
+                float: left;
+                
+                a:first-child{
+                    margin-left: 0;
+                }
+            }
+            
+            &.nav_right{
+                float: right;
+                
+                a:last-child{
+                    margin-right: 0;
+                }
+            }
+            
+            li{
+                display: inline-block;
+                position: relative;
+            }
+        }
+    }
 }

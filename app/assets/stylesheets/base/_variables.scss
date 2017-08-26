@@ -1,22 +1,9 @@
-$color-white: #FFF !default;
-$color-black: #000 !default;
-$color-blue:  darken(#428bca, 6.5%) !default;
+$color-white: #FFF;
+$color-black: #333;
+$color-blue:  #3498db;
 
-$body-bg:               $color-white !default;
-$text-color:            $color-black !default;
-$link-color:            $color-blue !default;
-$link-hover-color:      darken($link-color, 15%) !default;
-$link-hover-decoration: underline !default;
+$font-family-base: 'Open Sans', Helvetica, Arial, sans-serif;
+$font-size-base: 12px;
 
-$font-family-base: 'Open Sans', Helvetica, Arial, sans-serif !default;
-$font-size-base: 14px !default;
-
-$font-size-h1: floor(($font-size-base * 2.6)) !default; // ~36px
-$font-size-h2: floor(($font-size-base * 2.15)) !default; // ~30px
-$font-size-h3: ceil(($font-size-base * 1.7)) !default; // ~24px
-$font-size-h4: ceil(($font-size-base * 1.25)) !default; // ~18px
-$font-size-h5: $font-size-base !default;
-$font-size-h6: ceil(($font-size-base * 0.85)) !default; // ~12px
-
-$line-height-base:  1.428571429 !default; //20/14
 $max-width-content: 1200px;
+$height-header: 50px;

@@ -1,3 +1,40 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#welcome{
+    .banner_principal{
+        padding:            100px 0;
+        position:           relative;
+        text-align:         center;
+        background:         url(https://i.ytimg.com/vi/CtUIzpgtWT8/maxresdefault.jpg) no-repeat 50% 70%;
+        background-size:    100% auto;
+        
+        &:before{
+            top:             0;
+            left:            0;
+            width:           100%;
+            height:          100%;
+            z-index:         1;
+            content:         "";
+            position:        absolute;
+            background:      rgba(0, 0, 0, 0.5);
+        }
+        
+        .content{
+            z-index: 2;
+            position: relative;
+            color: $color-white;
+            
+            h1{
+                margin: 0;
+                font-size: 40px;
+                font-weight: 400;
+            }
+            
+            p{
+                font-size: 20px;
+            }
+        }
+    }
+}
