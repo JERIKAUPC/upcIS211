@@ -2,8 +2,15 @@
     color: $color-white;
     display: inline-block;
     background: $color-black;
+    border: 1px solid $color-black;
     height: 35px;
     line-height: 35px;
     padding: 0 15px;
     @include border-radius( 5px );
+    
+    &.btn-outline{
+        color: $color-black;
+        background: transparent;
+        border-color: $color-black;
+    }
 }
