@@ -18,10 +18,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-# jQuery for Rails
-gem 'jquery-rails'
-# Enable .env file
-gem 'dotenv-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -56,3 +52,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Gemas agregadas para el proyecto
+# jQuery for Rails
+gem 'jquery-rails'
+
+# Enable .env file
+gem 'dotenv-rails'
+
+# Bootstrap
+gem 'bootstrap', '~> 4.0.0.beta'
