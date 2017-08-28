@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  plate_str: MyString
+  brand_str: MyString
+  model_str: MyString
+  color_str: MyString
+  height_int: 1
+  width_int: 1
+  length_int: 1
+  picture_str: MyString
+
+two:
+  user_id: 1
+  plate_str: MyString
+  brand_str: MyString
+  model_str: MyString
+  color_str: MyString
+  height_int: 1
+  width_int: 1
+  length_int: 1
+  picture_str: MyString
