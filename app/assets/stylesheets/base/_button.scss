@@ -7,10 +7,21 @@
     line-height: 35px;
     padding: 0 15px;
     @include border-radius( 5px );
-    
+    @include transition(all .1s ease-in-out);
+
+    &:hover{
+        color: $color-black;
+        background-color: $color-white;
+    }
+
     &.btn-outline{
         color: $color-black;
         background: transparent;
         border-color: $color-black;
+
+        &:hover{
+            color: $color-white;
+            background-color: $color-black;
+        }
     }
 }

@@ -60,5 +60,5 @@ gem 'jquery-rails'
 # Enable .env file
 gem 'dotenv-rails'
 
-# Bootstrap
-gem 'bootstrap', '~> 4.0.0.beta'
+# Font Awesome
+gem 'font-awesome-sass', '~> 4.7.0'

@@ -1,0 +1,38 @@
+.banner_how_does_it_work{
+    padding-bottom: 50px;
+    background: $color-blue-light;
+    color: $color-gray-light;
+
+    h2{
+        text-align: center;
+        font-size: 55px;
+        font-weight: 200;
+        color: $color-blue-dark;
+        font-family: 'Source Sans Pro';
+    }
+
+    .banner_cols{
+        @include clearfix;
+
+        .banner_col{
+            float: left;
+            width: 33.333333%;
+            text-align: center;
+
+            .item_icon{
+                font-size: 50px;
+                padding-bottom: 15px;
+            }
+
+            .item_title{
+                font-size: 30px;
+                font-weight: 400;
+                font-family: 'Source Sans Pro';
+            }
+
+            .item_description{
+                font-size: 14px;
+            }
+        }
+    }
+}
