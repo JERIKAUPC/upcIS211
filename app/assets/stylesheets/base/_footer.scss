@@ -1,0 +1,14 @@
+footer{
+    color          : $color-white;
+    height         : $height-header;
+    background     : $color-blue;
+    line-height    : $height-header;
+    position       : fixed;
+    bottom         : 0px;
+    width          : 100%;
+    
+    a{
+        color          : $color-white;
+    }
+    
+}
