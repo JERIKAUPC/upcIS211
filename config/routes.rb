@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  get 'welcome/login'
 
   namespace "api" do
     namespace "v1" do
@@ -10,3 +11,4 @@ Rails.application.routes.draw do
     end
   end
 end
+

@@ -17,9 +17,11 @@ module Api
             def create
                 user = User.new(user_params)
                 if user.save
-                    render json: {status: 'SUCCESS', message: 'Created user', data:user},status: :ok
+                    #render json: {status: 'SUCCESS', message: 'Created user', data:user},status: :ok
+                    redirect_to root_path(@post), :alert => " Usuario registrado correctamente"
                 else
-                    render json: {status: 'ERROR', message: 'User not saved', data:user},status: :unprocessable_entity
+                    #render json: {status: 'ERROR', message: 'User not saved', data:user},status: :unprocessable_entity
+                    redirect_to welcome_login_path(@post), :notice => " Tenemos un error aqui! :("
                 end
             end
 
