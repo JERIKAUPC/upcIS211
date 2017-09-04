@@ -8,7 +8,7 @@
 
     <ul class="nav nav_right">
         <li><%= link_to 'Ofrece un lugar', "#", { :class => 'btn btn-default' } %></li>
-        <li><%= link_to 'Inicia sesión', "#" %></li>
-        <li><%= link_to 'Regístrate', welcome_login_path %></li>
+        <li><%= link_to 'Inicia sesión', "#", { :class => 'popup-open', :data => { :popup => 'login' } } %></li>
+        <li><%= link_to 'Regístrate', "#", { :class => 'popup-open', :data => { :popup => 'register' } } %></li>
     </ul>
 </div>

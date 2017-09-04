@@ -1,11 +1,13 @@
 .btn{
+    height: 35px;
+    padding: 0 15px;
+    line-height: 35px;
     color: $color-white;
     display: inline-block;
     background: $color-black;
     border: 1px solid $color-black;
-    height: 35px;
-    line-height: 35px;
-    padding: 0 15px;
+    outline: none;
+
     @include border-radius( 5px );
     @include transition(all .1s ease-in-out);
 
@@ -22,6 +24,22 @@
         &:hover{
             color: $color-white;
             background-color: $color-black;
+        }
+    }
+
+    &.btn-primary{
+        height: auto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        padding: 15px 15px;
+        color: $color-white;
+        border-color: $color-blue-dark;
+        background-color: $color-blue-dark;
+
+        &:hover{
+            border-color: darken($color-blue-dark, 10%);
+            background-color: darken($color-blue-dark, 10%);
         }
     }
 }

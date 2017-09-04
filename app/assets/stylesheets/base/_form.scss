@@ -1,0 +1,15 @@
+.form-group{
+}
+
+.form-control{
+    width: 100%;
+    outline: none;
+    font-size: 13px;
+    line-height: 22px;
+    background: transparent;
+    margin-bottom: 20px;
+    border: 1px solid $color-blue-light;
+    padding: 9px 9px 9px 38px;
+
+    @include border-radius( 5px );
+}

@@ -13,4 +13,12 @@
 //= require rails-ujs
 //= require jquery3
 //= require turbolinks
-//= require_tree .
+//= require lib/popup
+
+$.ajaxSetup( {
+    beforeSend: function ( xhr ) {
+        xhr.setRequestHeader( 'X-CSRF-Token', $( 'meta[name="csrf-token"]' ).attr( 'content' ) );
+    }
+});
+
+Popup.init();
