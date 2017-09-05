@@ -2,6 +2,7 @@ var Form = {
     init: function(){
         this.SignIn();
         this.SignUp();
+        this.LostPassword();
 
         this.filters();
     },
@@ -148,6 +149,55 @@ var Form = {
                             alert("Error creando al usuario.");
                         }
 
+                    }
+                });
+            }
+        });
+    },
+
+    LostPassword: function(){
+        $(document).on('submit', '.form-lost-password', function (e){
+            e.preventDefault();
+            var form = $(this);
+            var error = false;
+
+            // Campos a Validar
+            var email = $("input[name*='email']", form);
+
+            // Correo electrónico
+            if ( $.trim(email.val()) == "" ) {
+                error = true;
+                email.addClass("error");
+                addInputError( email, "Por favor, ingrese su correo electrónico." );
+            } else {
+                if ( ! isEmail(email.val()) ) {
+                    error = true;
+                    email.addClass("error");
+                    addInputError( email, "Por favor, ingrese un correo válido." );
+                } else {
+                    email.removeClass("error");
+                    removeInputError( email );
+                }
+            }
+
+            if ( ! error ) {
+                var data = {
+                    email: email.val()
+                };
+
+                $.ajax({
+                    url: form.attr("action"),
+                    data: data,
+                    method: 'POST',
+                    complete: function( res ) {
+                        var data = res.responseJSON;
+                        if ( data.status == 'SUCCESS' ) {
+                            $('.error_ajax', form).hide();
+                            $('.success_ajax', form).html("Correo enviado con éxito.").fadeIn('fast');
+                        } else {
+                            $('.success_ajax', form).hide();
+                            $('.error_ajax', form).html("Correo electrónico no encontrado.").fadeIn('fast');
+                        }
                     }
                 });
             }

@@ -21,4 +21,15 @@ class AuthController < ApplicationController
         redirect_back(fallback_location: root_path)
         #redirect_to root_path()
     end
+
+    def lost_password
+        user = User.find_by email: params[:email]
+
+        if user
+            UserMailer.lost_password(user).deliver
+            render json: {status: 'SUCCESS', message: 'Mail send successful', data:user},status: :ok
+        else
+            render json: {status: 'ERROR', message: 'User not found.', data:user},status: :ok
+        end
+    end
 end

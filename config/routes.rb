@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  post 'auth/login'
+  # GET
   get 'auth/logout'
+
+  # POST
+  post 'auth/login'
+  post 'auth/lost_password'
 
   namespace "api" do
     namespace "v1" do

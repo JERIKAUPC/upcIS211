@@ -6,7 +6,8 @@
         color: $color-red;
     }
 
-    .error_ajax{
+    .error_ajax,
+    .success_ajax{
         color: $color-red;
         text-align: center;
         background: lighten($color-red, 50%);
@@ -15,6 +16,11 @@
         display: none;
 
         @include border-radius( 5px );
+    }
+
+    .success_ajax{
+        color: $color-green;
+        background: #bcf5b9;
     }
 }
 
