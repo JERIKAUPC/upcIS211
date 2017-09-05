@@ -142,11 +142,11 @@ var Form = {
                         var data = res.responseJSON;
 
                         if ( res.status == 200 ) {
-                            //
+                            window.location.reload();
                         } else if ( res.status == 406 ) {
-                            alert("El correo ya existe en nuestra base de datos.");
+                            $('.error_ajax', form).html("El correo ya existe en nuestra base de datos.").fadeIn('fast');
                         } else {
-                            alert("Error creando al usuario.");
+                            $('.error_ajax', form).html("Error desconocido, intentalo más tarde.").fadeIn('fast');
                         }
 
                     }
