@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # GET
   get 'auth/logout'
+  get 'welcome/search'
 
   # POST
   post 'auth/login'

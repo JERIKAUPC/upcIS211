@@ -1,0 +1,30 @@
+#map {
+        width: 50%;
+        height: 600px;
+        background-color: grey;
+        float:left;
+        border-style: ridge;
+      }
+.left-block {
+        width: 50%;
+        height: 600px;
+        background-color: grey;
+        float:left;
+        border-style: ridge;
+        overflow: auto;
+}
+.titulo-search {
+        font-size: 200%;
+        font-weight: bold;
+}
+
+.list-img{
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border-style: ridge;
+}
+
+.box-oferta{
+        border-style: ridge;
+}
