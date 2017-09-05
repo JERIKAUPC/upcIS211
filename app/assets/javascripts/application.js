@@ -13,7 +13,9 @@
 //= require rails-ujs
 //= require jquery3
 //= require turbolinks
-//= require lib/popup
+//= require base/helper
+//= require base/popup
+//= require base/form
 
 $.ajaxSetup( {
     beforeSend: function ( xhr ) {
@@ -22,3 +24,4 @@ $.ajaxSetup( {
 });
 
 Popup.init();
+Form.init();

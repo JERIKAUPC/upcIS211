@@ -1,4 +1,21 @@
 .form-group{
+    margin-bottom: 20px;
+
+    .input-error{
+        margin-top: 5px;
+        color: $color-red;
+    }
+
+    .error_ajax{
+        color: $color-red;
+        text-align: center;
+        background: lighten($color-red, 50%);
+        margin-top: 10px;
+        padding: 10px;
+        display: none;
+
+        @include border-radius( 5px );
+    }
 }
 
 .form-control{
@@ -7,9 +24,12 @@
     font-size: 13px;
     line-height: 22px;
     background: transparent;
-    margin-bottom: 20px;
     border: 1px solid $color-blue-light;
     padding: 9px 9px 9px 38px;
 
     @include border-radius( 5px );
+
+    &.error{
+        border-color: lighten($color-red, 30%);
+    }
 }

@@ -1,42 +1,100 @@
 header{
     color          : $color-white;
     height         : $height-header;
+    z-index        : 2;
+    position       : relative;
     background     : $color-blue;
     line-height    : $height-header;
-    
+
     a{
         color          : $color-white;
     }
-    
+
     .nav_menu{
         float: right;
         width: calc(100% - 100px);
-        
+
         .nav{
             a{
                 margin-left: 10px;
                 margin-right: 10px;
             }
-            
+
             &.nav_left{
                 float: left;
-                
+
                 a:first-child{
                     margin-left: 0;
                 }
             }
-            
+
             &.nav_right{
                 float: right;
-                
+
                 a:last-child{
                     margin-right: 0;
                 }
             }
-            
+
             li{
                 display: inline-block;
                 position: relative;
+
+                .user-icon-menu{
+                    i.fa-user{
+                        font-size: 24px;
+                        vertical-align: sub;
+                        margin-right: 5px;
+                    }
+
+                    i.fa-chevron-up{
+                        display: none;
+                    }
+                }
+
+                .sub-menu{
+                    right: 0;
+                    top: 100%;
+                    width: 150px;
+                    display: none;
+                    position: absolute;
+                    line-height: normal;
+                    background: $color-blue;
+
+                    li{
+                        display: block;
+
+                        a{
+                            margin: 0;
+                            padding: 10px 15px;
+                            display: block;
+                            text-align: left;
+
+                            &:hover{
+                                color: $color-blue;
+                                background-color: $color-white;
+                            }
+                        }
+                    }
+                }
+
+                &:hover{
+                    >{
+                        .user-icon-menu{
+                            i.fa-chevron-down{
+                                display: none;
+                            }
+
+                            i.fa-chevron-up{
+                                display: inline-block;
+                            }
+                        }
+
+                        .sub-menu{
+                            display: block;
+                        }
+                    }
+                }
             }
         }
     }

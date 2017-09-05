@@ -7,6 +7,7 @@ var Popup = {
     open: function( ) {
         $(document).on('click', '.popup-open', function(e) {
             e.preventDefault();
+            $('.popup').removeClass('open');
             $('.popup-'+ $(this).data('popup')).addClass('open');
         });
     },
