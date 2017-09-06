@@ -1,21 +1,28 @@
 #map {
-        width: 50%;
+        width: 55%;
         height: 600px;
         background-color: grey;
-        float:left;
-        border-style: ridge;
+        //float:left;
+        //border-style: ridge;
+        border-radius: 10px;
+        display:inline-block;
       }
 .left-block {
-        width: 50%;
+        width: 40%;
         height: 600px;
-        background-color: grey;
-        float:left;
-        border-style: ridge;
+        //float:left;
+        //border-style: ridge;
         overflow: auto;
+        text-align:center;
+        border-radius: 10px;
+        display:inline-block;
 }
+
+
 .titulo-search {
         font-size: 200%;
         font-weight: bold;
+        color: grey;
 }
 
 .list-img{
@@ -23,8 +30,34 @@
         height: 80px;
         background-color: white;
         border-style: ridge;
+        margin:5px;
 }
 
 .box-oferta{
-        border-style: ridge;
+        //border-style: ridge;
+        //width:60%;
+        text-align:left;
+        margin:0;
+        display:inline-block;
+        background-color: $color-purewhite;
+        border-radius: 5px;
+        padding:10px;
+        
+}
+
+
+.big-icon-search{
+        font-size: 150%;
+}
+
+#idts {
+      width:60px;
+      text-align:center;
+      padding:0px;
+      vertical-align:bottom;
+}
+
+#search-subt{
+       font-size: 120%;
+       font-weight:bold;
 }

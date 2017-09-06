@@ -1,5 +1,5 @@
 <%- model_class = Offer -%>
-
+<br>
 <% model_class.all.each do |of| %>
 <div class="box-oferta">
     <table>
@@ -9,14 +9,28 @@
                 
             </td>
             <td>
-                <p>  <%= icon('id-card') %>   <%= User.find(of.User_id).name %></p>
-                <p>  <%= icon('flag-o') %>   <%= of.address %></p>
-                <p>  <%= icon('map-marker') %>   <%= of.location %></p>
-                 
+                <p id="search-subt">  <%= icon('id-card') %>  <%= User.find(of.User_id).name %></p>
+                <p>  <%= icon('flag-o') %>  <%= of.address %></p>
+                <p>  <%= icon('map-marker') %>  <%= of.location %></p>
+                <table>
+                    <tr>
+                        <td id="idts"> <div>   Con techo  </div></td>
+                        <td id="idts"> <div>    Grande    </div></td>
+                        <td id="idts"> <div>  Control </div></td>
+                        <td id="idts"> <div>              </div></td>
+                    </tr>
+                    <tr>
+                        <td id="idts"> <div class="big-icon-search">  <%= icon('umbrella') %></div></td>
+                        <td id="idts"> <div class="big-icon-search">  <%= icon('taxi') %></div></td>
+                        <td id="idts"> <div class="big-icon-search">  <%= icon('lock') %></div></td>
+                        <td id="idts"> <div>  Ver detalle </div></td>
+                    </tr>
+                    
+                </table>
             </td>
         </tr>
         
     </table>
 </div>
-        
+<br>      
 <% end %>
