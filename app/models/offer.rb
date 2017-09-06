@@ -1,5 +1,5 @@
 class Offer < ApplicationRecord
-    validates :user_id, :presence => true
+    validates :User_id, :presence => true
     validates :height, :presence => true 
     validates :width, :presence => true
     validates :length, :presence => true

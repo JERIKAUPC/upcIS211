@@ -3,4 +3,6 @@ class WelcomeController < ApplicationController
   end
   def login
   end
+  def search
+  end
 end

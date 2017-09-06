@@ -15,7 +15,7 @@ module Api
 
             # Método de creación de ofertas
             def create
-                offer = Offer.new(user_params)
+                offer = Offer.new(offer_params)
                 if offer.save
                     render json: {status: 'SUCCESS', message: 'Created offer', data:offer},status: :ok
                     #redirect_to root_path(@post), :alert => " Oferta registrada correctamente"
@@ -34,7 +34,7 @@ module Api
 
             private
             def offer_params
-                params.permit(:user_id,:height,:width,:length,:date_start,:date_end,:address,:location)
+                params.permit(:User_id,:height,:width,:length,:date_start,:date_end,:address,:location)
             end
             #hola
         end
