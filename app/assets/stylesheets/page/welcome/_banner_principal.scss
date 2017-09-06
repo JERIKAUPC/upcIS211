@@ -5,6 +5,11 @@
     background:         url("welcome/banner_principal.jpg") no-repeat 50% 70%;
     background-size:    100% auto;
 
+    @media all and (max-width: 700px) {
+        background-size:    cover;
+        padding: 60px 0 70px 0;
+    }
+
     &:before{
         top:             0;
         left:            0;
@@ -27,10 +32,22 @@
             font-weight: 100;
             text-transform: uppercase;
             font-family: 'Source Sans Pro';
+
+            @media all and (max-width: 610px) {
+                font-size: 35px;
+            }
+
+            @media all and (max-width: 385px) {
+                font-size: 28px;
+            }
         }
 
         p{
             font-size: 18px;
+
+            @media all and (max-width: 610px) {
+                font-size: 14px;
+            }
         }
 
         .btn{

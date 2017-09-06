@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1327.5 351.3" style="enable-background:new 0 0 1327.5 351.3;" xml:space="preserve">
+	 viewBox="0 0 1307.9 351.3" style="enable-background:new 0 0 1307.9 351.3;" xml:space="preserve">
 <style type="text/css">
 	.st0{display:none;}
 	.st1{fill:#FFFFFF;}
@@ -10,8 +10,10 @@
 </style>
 <path class="st0" d="M123,0C54.5,0,0,54.5,0,123c0,91.3,123,228.4,123,228.4s123-137,123-228.4C245.9,54.5,191.5,0,123,0z
 	 M123,166.9c-5.8,0-11.4-1.1-16.4-3.1c0,0-0.3,17.6-0.3,28.7c0,0,0,14.4-13,14.4c-13.9,0-14.1-14.4-14.1-14.4L79,123
-	c0-24.6,19.4-44,44-44s43.9,19.3,43.9,43.9S147.6,166.9,123,166.9z"/>
-<text transform="matrix(1 0 0 1 285.9213 273.0058)" class="st1 st2 st3">Parking</text>
-<path class="st1" d="M123,0C54.5,0,0,54.5,0,123c0,91.3,123,228.4,123,228.4s123-137,123-228.4C245.9,54.5,191.5,0,123,0z
-	 M123,166.9c-24.6,0-44-19.3-44-43.9s19.4-44,44-44s43.9,19.3,43.9,43.9S147.6,166.9,123,166.9z"/>
+	C79,98.4,98.4,79,123,79s43.9,19.3,43.9,43.9S147.6,166.9,123,166.9z"/>
+<g>
+	<text transform="matrix(1 0 0 1 255.9213 273.0058)" class="st1 st2 st3">Parking</text>
+	<path class="st1" d="M123,0C54.5,0,0,54.5,0,123c0,91.3,123,228.4,123,228.4s123-137,123-228.4C245.9,54.5,191.5,0,123,0z
+		 M123,166.9C98.4,166.9,79,147.6,79,123S98.4,79,123,79s43.9,19.3,43.9,43.9S147.6,166.9,123,166.9z"/>
+</g>
 </svg>

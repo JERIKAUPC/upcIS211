@@ -6,13 +6,27 @@ header{
     background     : $color-blue;
     line-height    : $height-header;
 
+    .content{
+        padding: 0 5px;
+    }
+
     a{
         color          : $color-white;
+
+        @media all and (max-width: 700px) {
+            img{
+                height: 30px;
+            }
+        }
     }
 
     .nav_menu{
         float: right;
         width: calc(100% - 150px);
+
+        @media all and (max-width: 700px) {
+            display: none;
+        }
 
         .nav{
             a{

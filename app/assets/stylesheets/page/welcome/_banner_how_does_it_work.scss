@@ -3,12 +3,24 @@
     background: $color-blue-light;
     color: $color-gray-light;
 
+    @media all and (max-width: 700px) {
+        padding-bottom: 30px;
+    }
+
     h2{
         text-align: center;
         font-size: 55px;
         font-weight: 200;
         color: $color-blue-dark;
         font-family: 'Source Sans Pro';
+
+        @media all and (max-width: 700px) {
+            font-size: 35px;
+        }
+
+        @media all and (max-width: 385px) {
+            font-size: 28px;
+        }
     }
 
     .banner_cols{
@@ -22,16 +34,35 @@
             .item_icon{
                 font-size: 50px;
                 padding-bottom: 15px;
+
+                @media all and (max-width: 690px) {
+                    font-size: 30px;
+                    padding-bottom: 5px;
+                }
             }
 
             .item_title{
                 font-size: 30px;
                 font-weight: 400;
                 font-family: 'Source Sans Pro';
+
+                @media all and (max-width: 690px) {
+                    font-size: 20px;
+                }
+
+                @media all and (max-width: 460px) {
+                    font-size: 16px;
+                    padding-bottom: 5px;
+                }
             }
 
             .item_description{
                 font-size: 14px;
+
+                @media all and (max-width: 690px) {
+                    font-size: 12px;
+                    padding: 0 5px;
+                }
             }
         }
     }
