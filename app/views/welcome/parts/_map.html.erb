@@ -19,9 +19,10 @@ function initMap() {
           position: new google.maps.LatLng(parseFloat("<%= of.location  %>".split(",")[0]), parseFloat("<%= of.location  %>".split(",")[1])),
           map: map,
           title: "<%= of.address  %>",
-          animation: google.maps.Animation.DROP
+          animation: google.maps.Animation.DROP,
+          label: "hola"
         });
-          
+        
       <% end %>
       
 //Intentar la geocalizacion
