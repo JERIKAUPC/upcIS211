@@ -28,14 +28,19 @@ function initMap() {
 //Intentar la geocalizacion
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
+            var np=position.coords.longitude-0.005;
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            var pos2 = {
+              lat: position.coords.latitude,
+              lng: np
+            }
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('Ud esta aqui!');
-            map.setCenter(pos);
+            map.setCenter(pos2);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
