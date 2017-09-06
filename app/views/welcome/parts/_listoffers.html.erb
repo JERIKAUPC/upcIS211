@@ -1,7 +1,15 @@
 <%- model_class = Offer -%>
 <br>
+<%- celda = -1 -%>
 <% model_class.all.each do |of| %>
+<% if (celda != 1) %>
+<%#= celda %>
 <div class="box-oferta">
+    <% else %>
+    <%#= celda %>
+    <div class="box-oferta box-oferta2">
+<% end %>
+<%- celda = ((-1)*celda) -%>
     <table>
         <tr>
             <td>
