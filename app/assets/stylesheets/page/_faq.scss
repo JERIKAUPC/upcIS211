@@ -1,0 +1,15 @@
+.faq-q{
+    font-size: 200%;
+    margin-left: 20px;
+    color: $color-blue;
+    cursor: pointer;
+}
+.faq-q:hover {
+    color: red;
+}
+.faq-a{
+    font-size: 140%;
+    margin-left: 40px;
+    color: grey;
+    display: none;
+}
