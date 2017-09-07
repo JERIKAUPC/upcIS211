@@ -2,32 +2,22 @@
 <html>
 <head>
     <title>Parking</title>
-    <link rel='icon' type='image/png' href='assets/favicon/favicon.ico' />
+    <link rel='icon' type='image/png' href='/assets/favicon/favicon.ico' />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
 </head>
-<body>
+<body class="page-search">
     <header>
-        <div class="content">
-            <%= render 'layouts/parts/headersearch' %>
-        </div>
+        <%= render 'layouts/parts/header_search' %>
     </header>
 
-    <div class="main">
-        <% flash.each do |key, value| %>
-            <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
-        <%= yield %>
-    </div>
-
-    <footer>
-        <div class="content">
-            <%= render 'layouts/parts/footer' %>
-        </div>
-    </footer>
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
 
     <%= render 'layouts/parts/sign_in' %>
     <%= render 'layouts/parts/sign_up' %>
