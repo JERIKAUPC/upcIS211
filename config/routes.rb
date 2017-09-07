@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # GET
   get 'auth/logout'
   get 'search/index'
+  get 'welcome/search'
+  get 'welcome/contact'
 
   # POST
   post 'auth/login'
