@@ -1,0 +1,48 @@
+<%- model_class = Offer -%>
+<br>
+<br>
+<br>
+<div class="inner-left-block">
+<%- celda = -1 -%>
+<% model_class.all.each do |of| %>
+<% if (celda != 1) %>
+<%#= celda %>
+<div class="box-oferta">
+    <% else %>
+    <%#= celda %>
+    <div class="box-oferta box-oferta2">
+<% end %>
+<%- celda = ((-1)*celda) -%>
+    <table>
+        <tr>
+            <td>
+                <img class="list-img" src="/assets/welcome/usuario.png"/>
+                
+            </td>
+            <td>
+                <p id="search-subt">  <%= icon('id-card') %>  <%= User.find(of.User_id).name %></p>
+                <p>  <%= icon('flag-o') %>  <%= of.address %></p>
+                <p>  <%= icon('map-marker') %>  <%= of.location %></p>
+                <table>
+                    <tr>
+                        <td id="idts"> <div>   Con techo  </div></td>
+                        <td id="idts"> <div>    Grande    </div></td>
+                        <td id="idts"> <div>  Control </div></td>
+                        <td id="idts"> <div>              </div></td>
+                    </tr>
+                    <tr>
+                        <td id="idts"> <div class="big-icon-search">  <%= icon('umbrella') %></div></td>
+                        <td id="idts"> <div class="big-icon-search">  <%= icon('taxi') %></div></td>
+                        <td id="idts"> <div class="big-icon-search">  <%= icon('lock') %></div></td>
+                        <td id="idts"> <button>Ver detalle</button></td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+<br>      
+<% end %>
+</div>

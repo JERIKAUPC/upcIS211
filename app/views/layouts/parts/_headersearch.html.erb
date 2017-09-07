@@ -3,10 +3,9 @@
 </a>
 
 <div class="nav_menu" id="menu_principal">
-    <ul class="nav nav_left">
-        <li><%= link_to '¿Buscas un lugar?', search_index_path %></li>
-        <li><%= link_to '¿Tienes espacio disponible?', "#" %></li>
-    </ul>
+    <div class="nav nav_left search-bar-icon">
+        <%= icon('search')%>   <input class="search-bar" type="text" placeholder="Buscar un lugar"/>
+    </div>
 
     <ul class="nav nav_right">
         <li><%= link_to 'Ofrece un lugar', "#", { :class => 'btn btn-default' } %></li>

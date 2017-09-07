@@ -4,7 +4,7 @@
         background-color: grey;
         //float:left;
         //border-style: ridge;
-        border-radius: 10px;
+        //border-radius: 10px;
         display:inline-block;
         position: absolute;
         //z-index: -10;
@@ -74,14 +74,23 @@
                         font-size: 4px;
                         padding: 4px;
                     }
+         button {
+                border: 1px;
+                padding: 2px;
+                font-size: 95%;
+                color: white;
+                background-color: $color-blue;
+                border-radius: 2px;
+        }
         
 }
 
 .box-oferta2{
         background-color: $color-blue;
         color: white;
-        a {
+        button {
                 color: black;
+                background-color: $color-purewhite;
         }
 }
 
@@ -100,4 +109,24 @@
 #search-subt{
        font-size: 120%;
        font-weight:bold;
+}
+
+.search-bar {
+        line-height    : 20px;
+        color: grey;
+        font-size: 12px;
+        width: 70%;
+}
+
+.search-bar-icon{
+        font-size: 150%;
+        //font-weight: bold;
+        color: grey;
+        vertical-align: top;
+        width: 70%;
+        display: inline-block;
+        
+        input {
+             display: inline-block;   
+        }
 }
