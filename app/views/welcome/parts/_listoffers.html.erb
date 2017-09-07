@@ -1,5 +1,8 @@
 <%- model_class = Offer -%>
 <br>
+<br>
+<br>
+<div class="inner-left-block">
 <%- celda = -1 -%>
 <% model_class.all.each do |of| %>
 <% if (celda != 1) %>
@@ -31,7 +34,7 @@
                         <td id="idts"> <div class="big-icon-search">  <%= icon('umbrella') %></div></td>
                         <td id="idts"> <div class="big-icon-search">  <%= icon('taxi') %></div></td>
                         <td id="idts"> <div class="big-icon-search">  <%= icon('lock') %></div></td>
-                        <td id="idts"> <div>  Ver detalle </div></td>
+                        <td id="idts"> <div>  <a href="#">Ver detalle</a> </div></td>
                     </tr>
                     
                 </table>
@@ -42,3 +45,4 @@
 </div>
 <br>      
 <% end %>
+</div>
