@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'search/index'
   get 'welcome/search'
   get 'welcome/contact'
+  get 'welcome/faq'
 
   # POST
   post 'auth/login'
