@@ -12,10 +12,12 @@ var Form = {
             e.preventDefault();
             var form = $(this);
             var error = false;
+            var sending = false;
 
             // Campos a Validar
             var email = $("input[name*='email']", form);
             var password = $("input[name*='password']", form);
+            var btn = $(".btn-send", form);
 
             // Correo electrónico
             if ( $.trim(email.val()) == "" ) {
@@ -49,19 +51,28 @@ var Form = {
                     password: password.val()
                 };
 
-                $.ajax({
-                    url: form.attr("action"),
-                    data: data,
-                    method: 'POST',
-                    complete: function( res ) {
-                        var data = res.responseJSON;
-                        if ( data.status == 'SUCCESS' ) {
-                            window.location.reload();
-                        } else {
-                            $('.error_ajax', form).html("Usuario y/o contraseña incorrectos.").fadeIn('fast');
+                if ( ! sending ) {
+                    sending = true;
+                    btn.addClass("btn-sending");
+
+                    $.ajax({
+                        url: form.attr("action"),
+                        data: data,
+                        method: 'POST',
+                        complete: function( res ) {
+                            sending = false;
+                            var data = res.responseJSON;
+
+                            if ( data.status == 'SUCCESS' ) {
+                                window.location.reload();
+                            } else {
+                                $('.error_ajax', form).html("Usuario y/o contraseña incorrectos.").fadeIn('fast');
+                            }
+
+                            btn.removeClass("btn-sending");
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     },
@@ -71,12 +82,14 @@ var Form = {
             e.preventDefault();
             var form = $(this);
             var error = false;
+            var sending = false;
 
             // Campos a Validar
             var name = $("input[name*='name']", form);
             var email = $("input[name*='email']", form);
             var password = $("input[name*='password']", form);
             var phone = $("input[name*='phone']", form);
+            var btn = $(".btn-send", form);
 
             // Validar campos antes de enviarlos por AJAX
             // Nombre completo
@@ -134,23 +147,30 @@ var Form = {
                     phone: phone.val()
                 };
 
-                $.ajax({
-                    url: form.attr("action"),
-                    data: data,
-                    method: 'POST',
-                    complete: function( res ) {
-                        var data = res.responseJSON;
+                if ( ! sending ) {
+                    sending = true;
+                    btn.addClass("btn-sending");
 
-                        if ( res.status == 200 ) {
-                            window.location.reload();
-                        } else if ( res.status == 406 ) {
-                            $('.error_ajax', form).html("El correo ya existe en nuestra base de datos.").fadeIn('fast');
-                        } else {
-                            $('.error_ajax', form).html("Error desconocido, intentalo más tarde.").fadeIn('fast');
+                    $.ajax({
+                        url: form.attr("action"),
+                        data: data,
+                        method: 'POST',
+                        complete: function( res ) {
+                            sending = false;
+                            var data = res.responseJSON;
+
+                            if ( res.status == 200 ) {
+                                window.location.reload();
+                            } else if ( res.status == 406 ) {
+                                $('.error_ajax', form).html("El correo ya existe en nuestra base de datos.").fadeIn('fast');
+                            } else {
+                                $('.error_ajax', form).html("Error desconocido, intentalo más tarde.").fadeIn('fast');
+                            }
+
+                            btn.removeClass("btn-sending");
                         }
-
-                    }
-                });
+                    });
+                }
             }
         });
     },
@@ -160,9 +180,11 @@ var Form = {
             e.preventDefault();
             var form = $(this);
             var error = false;
+            var sending = false;
 
             // Campos a Validar
             var email = $("input[name*='email']", form);
+            var btn = $(".btn-send", form);
 
             // Correo electrónico
             if ( $.trim(email.val()) == "" ) {
@@ -185,21 +207,30 @@ var Form = {
                     email: email.val()
                 };
 
-                $.ajax({
-                    url: form.attr("action"),
-                    data: data,
-                    method: 'POST',
-                    complete: function( res ) {
-                        var data = res.responseJSON;
-                        if ( data.status == 'SUCCESS' ) {
-                            $('.error_ajax', form).hide();
-                            $('.success_ajax', form).html("Correo enviado con éxito.").fadeIn('fast');
-                        } else {
-                            $('.success_ajax', form).hide();
-                            $('.error_ajax', form).html("Correo electrónico no encontrado.").fadeIn('fast');
+                if ( ! sending ) {
+                    sending = true;
+                    btn.addClass("btn-sending");
+
+                    $.ajax({
+                        url: form.attr("action"),
+                        data: data,
+                        method: 'POST',
+                        complete: function( res ) {
+                            sending = false;
+                            var data = res.responseJSON;
+
+                            if ( data.status == 'SUCCESS' ) {
+                                $('.error_ajax', form).hide();
+                                $('.success_ajax', form).html("Correo enviado con éxito.").fadeIn('fast');
+                            } else {
+                                $('.success_ajax', form).hide();
+                                $('.error_ajax', form).html("Correo electrónico no encontrado.").fadeIn('fast');
+                            }
+
+                            btn.removeClass("btn-sending");
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     },

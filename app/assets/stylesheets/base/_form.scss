@@ -22,6 +22,26 @@
         color: $color-green;
         background: #bcf5b9;
     }
+
+    .btn-send{
+        .normal{
+            display: block;
+        }
+
+        .sending{
+            display: none;
+        }
+
+        &.btn-sending{
+            .normal{
+                display: none;
+            }
+
+            .sending{
+                display: block;
+            }
+        }
+    }
 }
 
 .form-control{
