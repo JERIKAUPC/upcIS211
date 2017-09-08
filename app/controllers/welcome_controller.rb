@@ -5,4 +5,6 @@ class WelcomeController < ApplicationController
   end
   def search
   end
+  def estacionamiento
+  end
 end
