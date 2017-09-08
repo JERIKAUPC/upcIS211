@@ -149,6 +149,9 @@
                 color: white;
                 background-color: $color-blue;
                 border-radius: 2px;
+                a {
+                    color: white;
+                }
         }
 
 }
@@ -159,6 +162,9 @@
         button {
                 color: black;
                 background-color: $color-purewhite;
+                a {
+                    color: black;
+                }
         }
 }
 

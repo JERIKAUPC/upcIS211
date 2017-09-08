@@ -1,5 +1,5 @@
 .faq-q{
-    font-size: 200%;
+    font-size: 180%;
     margin-left: 20px;
     color: $color-blue;
     cursor: pointer;
@@ -10,6 +10,8 @@
 .faq-a{
     font-size: 140%;
     margin-left: 40px;
+    margin-right: 40px;
     color: grey;
     display: none;
+    text-align: justify;
 }
