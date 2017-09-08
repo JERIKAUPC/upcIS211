@@ -1,52 +1,69 @@
 <h1>hola</h1>
-<div class="est-leftcol">
-    <table class="est-table" rules="rows">
-        <tr>
-            <td colspan=2 class="est-titulo">Ignacio Merino 143</td>  <td class="est-text"><div><%= icon("star")%><%= icon("star")%><%= icon("star")%><%= icon("star")%><%= icon("star")%></td></div>
+<div class="content">
+    <div class="est-leftcol">
+        <table class="est-table" rules="rows">
             <tr>
-            <td colspan=3><img src="/assets/cochera1.jpg" class="est-img"/><img src="/assets/cochera2.jpg" class="est-img"/></td>
-            </tr>
-            <tr>
-                <td colspan=3 class="est-titulo">Informacion Basica</td>
+                <td colspan=2 class="est-titulo">Ignacio Merino 143</td>  <td class="est-text"><div><%= icon("star")%><%= icon("star")%><%= icon("star")%><%= icon("star")%><%= icon("star")%></div></td>
                 <tr>
-                    <td><div class="est-icono"> <%= icon('umbrella') %></div>Con Techo</td>
-                    <td><div class="est-icono"> <%= icon('home') %></div>Casa Privada</td>
-                    <td><div class="est-icono"> <%= icon('lock') %></div>Control Automático</td>
+                <td colspan=3><img src="/assets/cochera1.jpg" class="est-img"/><img src="/assets/cochera2.jpg" class="est-img"/></td>
                 </tr>
-            <tr>
-                <td colspan=3 class="est-titulo">Vehiculos aceptados</td>
                 <tr>
-                    <td><div class="est-icono"> <%= icon('motorcycle') %></div>Motocicleta</td>
-                    <td><div class="est-icono"> <%= icon('car') %></div>pequeño</td>
-                    <td><div class="est-icono"> <%= icon('truck') %></div>Mediano</td>
-                </tr>
-            </tr>
-            <tr>
-                <td colspan=3 class="est-titulo">Disponibilidad</td>
+                    <td colspan=3 class="est-titulo">Informacion Basica</td>
+                    <tr>
+                        <td><div class="est-icono"> <%= icon('umbrella') %></div>Con Techo</td>
+                        <td><div class="est-icono"> <%= icon('home') %></div>Casa Privada</td>
+                        <td><div class="est-icono"> <%= icon('lock') %></div>Control Automático</td>
+                    </tr>
                 <tr>
-                    <td class="est-icono">Viernes</td>
-                    <td class="est-icono">Sabado</td>
-                    <td class="est-icono">Domingo</td>
+                    <td colspan=3 class="est-titulo">Vehiculos aceptados</td>
+                    <tr>
+                        <td><div class="est-icono"> <%= icon('motorcycle') %></div>Motocicleta</td>
+                        <td><div class="est-icono"> <%= icon('car') %></div>pequeño</td>
+                        <td><div class="est-icono"> <%= icon('truck') %></div>Mediano</td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td colspan=3 class="est-titulo">Disponibilidad</td>
+                    <tr>
+                        <td>Viernes</td>
+                        <td>Sabado</td>
+                        <td>Domingo</td>
+                    </tr>
+                </tr>
+                <tr>
+                <td colspan=3 class="est-titulo">Horario</td>
+                </tr>
+                <tr>
+                    <td><div class="est-icono"> <%= icon('sun-o') %></div>Durante el dia</td>
+                    <td><div class="est-icono"> Entrada</div>10:00 am</td>
+                    <td><div class="est-icono"> Salida</div>06:00 pm</td>
+                </tr>
+                <tr>
+                    <td  colspan=3 class="est-titulo"><div> Propietario</div><%= icon('check')%> Gabriel Guanilo</td>
                 </tr>
             </tr>
-            <tr>
-               <td colspan=3 class="est-titulo">Horario</td>
-            </tr>
-            <tr>
-                <td><div class="est-icono"> <%= icon('sun-o') %></div>Durante el dia</td>
-                <td><div class="est-icono"> Entrada</div>10:00 am</td>
-                <td><div class="est-icono"> Salida</div>06:00 pm</td>
-            </tr>
-            <tr>
-                <td colspan=3 class="est-titulo"> Propietario </td>
-            </tr>
-            <tr>
-                <td colspan=3 class="est-titulo"><%= icon('check')%> Gabriel Guanilo</td>
-            </tr>
-        </tr>
-    </table>
-</div>
+        </table>
+    </div>
 
-<div>
-    
+    <div class="est-rightcol">
+        <table class="est-tabler" rules="rows">
+            <tr>
+                <td class="est-titulo"> S./ 600 </td>
+                <td class="est-titulo"><div class="est-titulo2"> Mensual</div></td>
+                <tr>
+                    <td><div>Fecha de Inicio</div>Meses a reservar</td>
+                    <td><div><input type="date"></div><select name="Meses">
+                        <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option><option>Mayo</option><option>Junio</option>
+                        <option>Julio</option><option>Agosto</option><option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+                        </select><br>x meses</td>
+                </tr>
+                <tr>
+                    <td class="est-titulo">Total</td>
+                    <td class="est-titulo2">S./ 600</td>
+                </tr>
+                <tr>
+                    <td colspan=2><input type="button" value="Solicitar" style="width:70px; height:25px"></td>
+                </tr>
+            </tr>
+    </div>
 </div>
