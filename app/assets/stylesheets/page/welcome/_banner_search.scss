@@ -1,0 +1,49 @@
+.banner_search{
+    padding: 20px 10px;
+
+    @media all and (max-width: 595px) {
+        text-align: center;
+    }
+
+    .banner_text{
+        font-size: 22px;
+        line-height: 50px;
+
+        @media all and (max-width: 715px) {
+            font-size: 18px;
+            line-height: 40px;
+        }
+
+        @media all and (max-width: 595px) {
+            display: block;
+            text-align: center;
+            line-height: normal;
+            padding-bottom: 10px;
+            font-size: 16px;
+        }
+    }
+
+    .btn{
+        float: right;
+        background-color: $color-green-light;
+        font-size: 18px;
+        padding: 0 25px;
+        height: 50px;
+        line-height: 50px;
+        border-color: $color-green-light;
+
+        @media all and (max-width: 715px) {
+            font-size: 16px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        @media all and (max-width: 595px) {
+            float: none;
+        }
+
+        &:hover{
+            background-color: darken($color-green-light, 5%);
+        }
+    }
+}

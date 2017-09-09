@@ -1,41 +1,48 @@
-.banner_how_does_it_work{
-    padding-bottom: 50px;
-    background: $color-blue-light;
-    color: $color-gray-light;
+.banner_service{
+    background: darken($color-blue-dark, 10%);
+    color: $color-white;
+    position: relative;
 
-    @media all and (max-width: 700px) {
-        padding-bottom: 30px;
-    }
-
-    h2{
-        text-align: center;
-        font-size: 55px;
-        font-weight: 200;
-        color: $color-blue-dark;
-        font-family: 'Source Sans Pro';
-
-        @media all and (max-width: 700px) {
-            font-size: 35px;
-        }
-
-        @media all and (max-width: 385px) {
-            font-size: 28px;
-        }
+    .background_col_end{
+        position: absolute;
+        z-index: 0;
+        background: lighten($color-blue-dark, 10%);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 50%;
     }
 
     .banner_cols{
         @include clearfix;
+        display: table;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+
+        @media all and (max-width: 490px) {
+            display: block;
+        }
 
         .banner_col{
-            float: left;
+            display: table-cell;
             width: 33.333333%;
             text-align: center;
+            padding: 40px 15px;
+            background-color: darken($color-blue-dark, 10%);
+
+            &.banner_col_2{
+                background-color: $color-blue-dark;
+            }
+
+            &.banner_col_3{
+                background-color: lighten($color-blue-dark, 10%);
+            }
 
             @media all and (max-width: 490px) {
-                float: none;
                 width: 100%;
                 text-align: center;
-                padding-bottom: 15px;
+                display: block;
             }
 
             .item_icon{
@@ -52,6 +59,7 @@
                 font-size: 30px;
                 font-weight: 400;
                 font-family: 'Source Sans Pro';
+                padding-bottom: 10px;
 
                 @media all and (max-width: 810px) {
                     font-size: 20px;

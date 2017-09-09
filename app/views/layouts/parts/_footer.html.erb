@@ -1,1 +1,26 @@
-KrOg &copy;2017&nbsp;&nbsp;&nbsp;<a href="/welcome/contact">Contacto</a>&nbsp;&nbsp;&nbsp;<a href="/welcome/faq">Preguntas Frecuentes</a>
+<div class="footer_cols">
+    <ul class="footer_col">
+        <li class="footer_box_title">Conócenos</li>
+        <li><%= link_to 'Sobre nosotros', "#" %></li>
+        <li><%= link_to 'Contacto', welcome_contact_path %></li>
+        <li><%= link_to 'Preguntas frecuentes', welcome_faq_path %></li>
+    </ul>
+
+    <ul class="footer_col">
+        <li class="footer_box_title">Interactua</li>
+        <li><%= link_to 'Buscar estacionamiento', search_index_path %></li>
+        <li><%= link_to 'Ofrecer estacionamiento', "#" %></li>
+    </ul>
+
+    <div class="footer_col social_networks">
+        <div class="footer_box_title">
+            Conéctate con nosotros
+        </div>
+        <a href="#"><%= icon('facebook') %></a>
+        <a href="#"><%= icon('twitter') %></a>
+        <a href="#"><%= icon('youtube') %></a>
+    </div>
+</div>
+<div class="copyright">
+    &copy; 2017 - Krog Solutions
+</div>
