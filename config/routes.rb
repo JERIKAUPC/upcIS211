@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   # GET
   get 'auth/logout'
-  get 'search/index'
-  get 'welcome/search'
-  get 'welcome/contact'
-  get 'welcome/faq'
-  get 'welcome/about_us'
+  
+  get 'about_us', to: 'about_us#index', as: 'about_us_index'
+  get 'search', to: 'search#index', as: 'search_index'
+  get 'contact', to: 'contact#index', as: 'contact_index'
+  get 'faq', to: 'faq#index', as: 'faq_index'
+  
   get 'search/estacionamiento'
-  get 'search/index' , as: 'search'
 
   # POST
   post 'auth/login'
