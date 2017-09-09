@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'welcome/faq'
   get 'welcome/about_us'
   get 'search/estacionamiento'
+  get 'search/index' , as: 'search'
 
   # POST
   post 'auth/login'
