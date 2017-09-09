@@ -12,10 +12,12 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require base/map-icons
 //= require turbolinks
 //= require base/helper
 //= require base/popup
 //= require base/form
+//= require base/map
 
 $.ajaxSetup( {
     beforeSend: function ( xhr ) {
@@ -27,15 +29,5 @@ Popup.init();
 Form.init();
 
 function show_a(element){
-    if (document.getElementById(element).style.display == 'block'){
-        element="#"+element;
-        $(element).slideUp(500);
-        //document.getElementById(element).style.display = 'none';
-    } else {
-        element="#"+element;
-        //$(element).fadeIn(1500);
-        $(element).slideDown(500);
-        //document.getElementById(element).style.display = 'block';
-    }
-    
+    $("#"+ element).slideToggle("fast");
 }

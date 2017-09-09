@@ -14,7 +14,7 @@ function initMap() {
 //COLOCAR TODOS LOS MARCADORES
 
       <% model_class.all.each do |of| %>
-      
+
           marker = new google.maps.Marker({
           position: new google.maps.LatLng(parseFloat("<%= of.location  %>".split(",")[0]), parseFloat("<%= of.location  %>".split(",")[1])),
           map: map,
@@ -22,9 +22,9 @@ function initMap() {
           animation: google.maps.Animation.DROP,
           //label: "hola"
         });
-        
+
       <% end %>
-      
+
 //Intentar la geocalizacion
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -50,7 +50,7 @@ function initMap() {
         }
 
 }
-      
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -58,6 +58,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                               'Error: Tu navegador no soporta geolocalizacion.');
 }
 </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqOUDOLDeXrnJ83WGhE7szaZC4Uiauuk&callback=initMap">
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqOUDOLDeXrnJ83WGhE7szaZC4Uiauuk&callback=Map.init"></script>
