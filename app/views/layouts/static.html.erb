@@ -24,18 +24,12 @@
             <div class="sidebar-content">
                 <h2 class="navigation-header">INFORMACIÓN</h2>
                 <ul>
-                    <li>
-                        <a href="#" class="active">Empresa</a>
-                    </li>
-                    <li>
-                        <a href="#">Contacto</a>
-                    </li>
+                    <li><%= link_to "Empresa", about_us_index_path, :class => current_class(about_us_index_path) %></li>
+                    <li><%= link_to "Contacto", contact_index_path, :class => current_class(contact_index_path) %></li>
                 </ul>
                 <h2 class="navigation-header">LEGAL</h2>
                 <ul>
-                    <li>
-                        <a href="#">FAQ</a>
-                    </li>
+                    <li><%= link_to "FAQ", faq_index_path, :class => current_class(faq_index_path) %></li>
                     <li>
                         <a href="#">Condiciones</a>
                     </li>

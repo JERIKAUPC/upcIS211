@@ -1,4 +1,6 @@
 class ContactController < ApplicationController
-  def index
-  end
+    layout 'static'
+
+    def index
+    end
 end

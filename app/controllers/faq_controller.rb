@@ -1,4 +1,5 @@
 class FaqController < ApplicationController
-  def index
-  end
+    layout 'static'
+    def index
+    end
 end
