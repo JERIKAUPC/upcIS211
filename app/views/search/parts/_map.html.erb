@@ -6,7 +6,7 @@ function plantilla(of,clase){
   } else {
     return "<div class='box-oferta'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
   }
-    
+
 }
 
 //Inicializar el mapa
@@ -29,13 +29,13 @@ function initMap() {
       datosjs = {};
       //urlser='https://sp6-kennygonzales.c9users.io/api/v1/offers';
       urlser='/api/v1/offers';
-      
+
       $.getJSON(urlser, datosjs, function(response){
         alert(3.50);
         var pinpon=-1;
-        arraytemporal=response.data; 
+        arraytemporal=response.data;
         //verificar centro
-         var cm={lat: -12.077450, lng: -77.093677}; 
+         var cm={lat: -12.077450, lng: -77.093677};
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
             cm = {
@@ -51,10 +51,10 @@ function initMap() {
             ubicart();
             handleLocationError(true, infoWindow, map.getCenter());
           });
-          
+
           }
         //fin de verificar
-        
+
         function ubicart(){
           var nz = map.getZoom();
           var dv =$("#map").height()*Math.PI*Math.cos(cm.lat*Math.PI/180)/Math.pow(2,nz+2);
@@ -62,7 +62,7 @@ function initMap() {
         arraytemporal.forEach( function(valor, indice, arreglo) {
           var la =parseFloat(valor.location.split(",")[0]);
           var lo =parseFloat(valor.location.split(",")[1]);
-          
+
           console.log(""+la+" "+lo+" contra: "+(cm.lat+dv)+" y "+(cm.lat-dv));
         if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
           	marker = new google.maps.Marker({
@@ -71,11 +71,11 @@ function initMap() {
           		title: valor.address,
           		animation: google.maps.Animation.DROP
         	  });
-           document.getElementById('listoffers').innerHTML+=plantilla(valor,pinpon); 
+           document.getElementById('listoffers').innerHTML+=plantilla(valor,pinpon);
         pinpon=pinpon*(-1);
         }
         });
-        
+
         var triangleCoords = [
           {lat: cm.lat+dv, lng: cm.lng+dh},
           {lat: cm.lat+dv, lng: cm.lng-dh},
@@ -93,12 +93,12 @@ function initMap() {
         fillOpacity: 0.35
         });
         bermudaTriangle.setMap(map);
-        
+
         }
-       
+
       });
-       
-      for (i = 0; i < marcadores.length; i++) {  
+
+      for (i = 0; i < marcadores.length; i++) {
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
           map: map,
@@ -111,13 +111,13 @@ function initMap() {
             infowindow.open(map, marker);
           }
         })(marker, i));
-       
+
       }
-      
-        
-        
+
+
+
         //FIN DE MARCADORES
-        
+
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -145,6 +145,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                               'Error: Tu navegador no soporta geolocalizacion.');
 }
 
+// reload google maps api
 if (typeof google === 'object' && typeof google.maps === 'object') {
     if ( typeof GoogleMap.map == "undefined" ) {
         GoogleMap.init();
