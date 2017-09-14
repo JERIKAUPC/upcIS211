@@ -17,7 +17,7 @@
 //= require base/helper
 //= require base/popup
 //= require base/form
-//= require base/map
+//= require base/google-map
 
 $.ajaxSetup( {
     beforeSend: function ( xhr ) {

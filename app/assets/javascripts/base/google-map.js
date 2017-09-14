@@ -1,4 +1,4 @@
-var Map = {
+var GoogleMap = {
     obj: null,
     info: null,
 
@@ -13,12 +13,13 @@ var Map = {
     },
 
     runMap: function ( map ) {
+        console.log(map.get(0));
         this.obj = new google.maps.Map( map.get(0) , {
           center: this.center,
           zoom: 16
         });
 
-        this.addMarker( this.center )
+        this.addMarker( this.center );
     },
 
     addMarker: function ( position ) {

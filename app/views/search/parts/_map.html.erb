@@ -57,7 +57,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                               'Error: El servicio de geolocalizacion ha fallado.' :
                               'Error: Tu navegador no soporta geolocalizacion.');
 }
-</script>
-<script async defer 
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzqOUDOLDeXrnJ83WGhE7szaZC4Uiauuk&callback=initMap">
+
+if (typeof google === 'object' && typeof google.maps === 'object') {
+    if ( typeof GoogleMap.map == "undefined" ) {
+        GoogleMap.init();
+    }
+}
 </script>
