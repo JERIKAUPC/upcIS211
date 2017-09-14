@@ -13,7 +13,6 @@ var GoogleMap = {
     },
 
     runMap: function ( map ) {
-        console.log(map.get(0));
         this.obj = new google.maps.Map( map.get(0) , {
           center: this.center,
           zoom: 16
