@@ -1,5 +1,13 @@
 <%- model_class = Offer -%>
 <script>
+function plantilla(of,clase){
+  if (clase==1){
+    return "<div class='box-oferta box-oferta2'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+  } else {
+    return "<div class='box-oferta'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+  }
+    
+}
 
 //Inicializar el mapa
 function initMap() {
@@ -11,41 +19,116 @@ function initMap() {
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
 
-//COLOCAR TODOS LOS MARCADORES
-
-      <% model_class.all.each do |of| %>
-
-          marker = new google.maps.Marker({
-          position: new google.maps.LatLng(parseFloat("<%= of.location  %>".split(",")[0]), parseFloat("<%= of.location  %>".split(",")[1])),
-          map: map,
-          title: "<%= of.address  %>",
-          animation: google.maps.Animation.DROP,
-          //label: "hola"
+ //COLOCAR TODOS LOS MARCADORES
+        var marcadores = [
+        ['León', -12.077450, -77.093677],
+        ['Salamanca', -12.075619, -77.092213],
+        ['Zamora', -12.076280, -77.096193],
+        ['Zbgr', parseFloat("-12.077000"), -77.097000]
+      ];
+      datosjs = {};
+      //urlser='https://sp6-kennygonzales.c9users.io/api/v1/offers';
+      urlser='/api/v1/offers';
+      
+      $.getJSON(urlser, datosjs, function(response){
+        alert(3.50);
+        var pinpon=-1;
+        arraytemporal=response.data; 
+        //verificar centro
+         var cm={lat: -12.077450, lng: -77.093677}; 
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            cm = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            console.log(cm);
+            infoWindow.setPosition(cm);
+            infoWindow.setContent('Ud esta aqui!');
+            map.setCenter(cm);
+            ubicart();
+          }, function() {
+            ubicart();
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+          
+          }
+        //fin de verificar
+        
+        function ubicart(){
+        arraytemporal.forEach( function(valor, indice, arreglo) {
+          var la =parseFloat(valor.location.split(",")[0]);
+          var lo =parseFloat(valor.location.split(",")[1]);
+          console.log(""+la+" "+lo+" contra: "+(cm.lat+0.005)+" y "+(cm.lat-0.005));
+        if ( (la<cm.lat+0.005) && (la>cm.lat-0.005) && (lo<cm.lng+0.005) && (lo>cm.lng-0.005) ){
+          	marker = new google.maps.Marker({
+          		position: new google.maps.LatLng(la,lo),
+          		map: map,
+          		title: valor.address,
+          		animation: google.maps.Animation.DROP
+        	  });
+           document.getElementById('listoffers').innerHTML+=plantilla(valor,pinpon); 
+        pinpon=pinpon*(-1);
+        }
         });
+        
+        var triangleCoords = [
+          {lat: cm.lat+0.005, lng: cm.lng+0.005},
+          {lat: cm.lat+0.005, lng: cm.lng-0.005},
+          {lat: cm.lat-0.005, lng: cm.lng-0.005},
+          {lat: cm.lat-0.005, lng: cm.lng+0.005}
+        ];
 
-      <% end %>
-
-//Intentar la geocalizacion
+        // Construct the polygon.
+        var bermudaTriangle = new google.maps.Polygon({
+        paths: triangleCoords,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
+        });
+        bermudaTriangle.setMap(map);
+        
+        }
+       
+      });
+       
+      for (i = 0; i < marcadores.length; i++) {  
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+          map: map,
+          title: marcadores[i][0],
+          animation: google.maps.Animation.DROP
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(marcadores[i][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
+       
+      }
+      
+        
+        
+        //FIN DE MARCADORES
+        
+        // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
-            var np=position.coords.longitude-0.005;
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            var pos2 = {
-              lat: position.coords.latitude,
-              lng: np
-            }
-
             infoWindow.setPosition(pos);
             infoWindow.setContent('Ud esta aqui!');
-            map.setCenter(pos2);
+            map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
         } else {
-          // El navegador no soporta la geocalizacion
+          // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
 
