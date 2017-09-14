@@ -56,11 +56,15 @@ function initMap() {
         //fin de verificar
         
         function ubicart(){
+          var nz = map.getZoom();
+          var dv =$("#map").height()*Math.PI*Math.cos(cm.lat*Math.PI/180)/Math.pow(2,nz+2);
+          var dh =$("#map").width()*Math.PI*Math.cos(cm.lng*Math.PI/180)/Math.pow(2,nz);
         arraytemporal.forEach( function(valor, indice, arreglo) {
           var la =parseFloat(valor.location.split(",")[0]);
           var lo =parseFloat(valor.location.split(",")[1]);
-          console.log(""+la+" "+lo+" contra: "+(cm.lat+0.005)+" y "+(cm.lat-0.005));
-        if ( (la<cm.lat+0.005) && (la>cm.lat-0.005) && (lo<cm.lng+0.005) && (lo>cm.lng-0.005) ){
+          
+          console.log(""+la+" "+lo+" contra: "+(cm.lat+dv)+" y "+(cm.lat-dv));
+        if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
           	marker = new google.maps.Marker({
           		position: new google.maps.LatLng(la,lo),
           		map: map,
@@ -73,10 +77,10 @@ function initMap() {
         });
         
         var triangleCoords = [
-          {lat: cm.lat+0.005, lng: cm.lng+0.005},
-          {lat: cm.lat+0.005, lng: cm.lng-0.005},
-          {lat: cm.lat-0.005, lng: cm.lng-0.005},
-          {lat: cm.lat-0.005, lng: cm.lng+0.005}
+          {lat: cm.lat+dv, lng: cm.lng+dh},
+          {lat: cm.lat+dv, lng: cm.lng-dh},
+          {lat: cm.lat-dv, lng: cm.lng-dh},
+          {lat: cm.lat-dv, lng: cm.lng+dh}
         ];
 
         // Construct the polygon.
