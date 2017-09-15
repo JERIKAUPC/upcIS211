@@ -1,7 +1,9 @@
 var GoogleMap = {
     obj: null,      //objeto mapa
     info: null,
-    inw: null,      //objeto infowindow
+    inw: null,//objeto infowindow
+    autocomplete: null,
+    places: null,
     markers : [],   //Marcadores actuales
     grafico : [],   //zona actual
     urlser : '/api/v1/offers', //url servicio
@@ -24,7 +26,7 @@ var GoogleMap = {
           styles: [ { "elementType": "geometry", "stylers": [ { "color": "#ebe3cd" } ] }, { "elementType": "labels.text.fill", "stylers": [ { "color": "#523735" } ] }, { "elementType": "labels.text.stroke", "stylers": [ { "color": "#f5f1e6" } ] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [ { "color": "#c9b2a6" } ] }, { "featureType": "administrative.land_parcel", "elementType": "geometry.stroke", "stylers": [ { "color": "#dcd2be" } ] }, { "featureType": "administrative.land_parcel", "elementType": "labels.text.fill", "stylers": [ { "color": "#ae9e90" } ] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [ { "color": "#b10a3c" } ] }, { "featureType": "landscape.natural", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "poi", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "poi", "elementType": "labels.text", "stylers": [ { "visibility": "off" } ] }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [ { "color": "#93817c" } ] }, { "featureType": "poi.business", "stylers": [ { "visibility": "off" } ] }, { "featureType": "poi.park", "elementType": "geometry.fill", "stylers": [ { "color": "#a5b076" } ] }, { "featureType": "poi.park", "elementType": "labels.text.fill", "stylers": [ { "color": "#447530" } ] }, { "featureType": "road", "elementType": "geometry", "stylers": [ { "color": "#f5f1e6" } ] }, { "featureType": "road", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [ { "color": "#fdfcf8" } ] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [ { "color": "#f8c967" } ] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [ { "color": "#e9bc62" } ] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [ { "color": "#e98d58" } ] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [ { "color": "#db8555" } ] }, { "featureType": "road.local", "elementType": "labels.text.fill", "stylers": [ { "color": "#806b63" } ] }, { "featureType": "transit", "stylers": [ { "visibility": "off" } ] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "transit.line", "elementType": "labels.text.fill", "stylers": [ { "color": "#8f7d77" } ] }, { "featureType": "transit.line", "elementType": "labels.text.stroke", "stylers": [ { "color": "#ebe3cd" } ] }, { "featureType": "transit.station", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [ { "color": "#b9d3c2" } ] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [ { "color": "#92998d" } ] } ]
         });
 
-        this.addMarker( this.center );
+        //this.addMarker( this.center );
         this.inw = new google.maps.InfoWindow({map: this.obj});
         this.obj.addListener('click', function(e) {
           // 3 seconds after the center of the map has changed, pan back to the
@@ -34,6 +36,7 @@ var GoogleMap = {
         }
         );
         this.conectarDB(this.inw,this.obj);
+        this.iniciarAutocompletar();
     },
 
     addMarker: function ( position ) {
@@ -51,16 +54,17 @@ var GoogleMap = {
         });
     },
     
-    plantilla: function (of,clase){
+    plantilla: function (of,clase,nid){
         if (clase==1){
-            return "<div class='box-oferta box-oferta2'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+            return "<div id='o"+ nid +"' class='box-oferta box-oferta2'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
         } else {
-            return "<div class='box-oferta'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+            return "<div id='o"+ nid +"' class='box-oferta'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
         }
     },
 
     ubicart: function(arraytemporal,obj){
           var pinpon=-1;
+          var numid=1;
           var cm =GoogleMap.center;
           var nz = GoogleMap.obj.getZoom();
           var dv =$("#map").height()*Math.PI*Math.cos(cm.lat*Math.PI/180)/Math.pow(2,nz+2);
@@ -81,9 +85,16 @@ var GoogleMap = {
           		title: valor.address,
           		animation: google.maps.Animation.DROP
         	  });
+        	  var idstring="o"+numid;
+        	  var michi="#"+idstring;
+        	  marker.addListener('click', function() {
+        	    $( michi ).addClass( "boxresaltado" );
+              document.getElementById(idstring).scrollIntoView();
+            });
         	  GoogleMap.markers.push(marker);
-           document.getElementById('listoffers').innerHTML+=GoogleMap.plantilla(valor,pinpon); 
+           document.getElementById('listoffers').innerHTML+=GoogleMap.plantilla(valor,pinpon,numid); 
             pinpon=pinpon*(-1);
+            numid+=1;
           }
         });
         
@@ -101,7 +112,7 @@ var GoogleMap = {
           strokeOpacity: 0.8,
           strokeWeight: 0.5,
           fillColor: '#FF0000',
-          fillOpacity: 0.35
+          fillOpacity: 0.08
         });
         GoogleMap.grafico=[sqrtONmap];
         sqrtONmap.addListener('click', function(e) {
@@ -167,6 +178,28 @@ var GoogleMap = {
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: El servicio de geolocalizacion ha fallado.' :
                               'Error: Tu navegador no soporta geolocalizacion.');
+    },
+    
+    iniciarAutocompletar: function(){
+      this.autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */ (
+                document.getElementById('autocomplete')), {
+              types: ['(cities)'],
+              componentRestrictions: {'country': 'pe'}
+            });
+        this.places = new google.maps.places.PlacesService(this.obj);
+        this.autocomplete.addListener('place_changed', function () {
+        var place = GoogleMap.autocomplete.getPlace();
+        if (place.geometry) {
+          GoogleMap.obj.panTo(place.geometry.location);
+          GoogleMap.obj.setZoom(16);
+          GoogleMap.extdata(null);
+        } else {
+          document.getElementById('autocomplete').placeholder = 'Enter a city';
+        }
+      }
+      );
+
     }
     
     
