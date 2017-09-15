@@ -184,7 +184,7 @@ var GoogleMap = {
       this.autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */ (
                 document.getElementById('autocomplete')), {
-              types: ['(cities)'],
+              types: ['geocode'],
               componentRestrictions: {'country': 'pe'}
             });
         this.places = new google.maps.places.PlacesService(this.obj);
@@ -195,7 +195,7 @@ var GoogleMap = {
           GoogleMap.obj.setZoom(16);
           GoogleMap.extdata(null);
         } else {
-          document.getElementById('autocomplete').placeholder = 'Enter a city';
+          document.getElementById('autocomplete').placeholder = 'Busque un lugar';
         }
       }
       );
