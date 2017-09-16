@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # GET
   get 'auth/logout'
+  get 'login', to: 'auth#index', as: 'auth_index'
 
   get 'about_us', to: 'about_us#index', as: 'about_us_index'
   get 'search', to: 'search#index', as: 'search_index'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'search/estacionamiento'
   get 'legal/index'
+
   # POST
   post 'auth/login'
   post 'auth/lost_password'
