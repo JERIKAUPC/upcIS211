@@ -7,7 +7,7 @@
 
             <h2 class="popup-title">Inicia sesión</h2>
 
-            <%= form_tag( auth_login_path(), {:method => "post", :class => "form-sign-in"} ) do %>
+            <form class="form-sign-in" action="<%= auth_login_path() %>" method="post">
                 
                 <div class="form-group input-icon">
                     <input type="email" name="email" placeholder="Correo electrónico" autocomplete="off" value="" class="form-control">
@@ -39,7 +39,7 @@
                         </a>
                     </span>
                 </div>
-            <% end%>
+            </form>
         </div>
     </div>
 </div>
