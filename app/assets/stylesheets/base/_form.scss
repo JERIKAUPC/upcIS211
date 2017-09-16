@@ -17,6 +17,10 @@
 
         @include border-radius( 5px );
     }
+    
+    .error_show{
+        display: block;
+    }
 
     .success_ajax{
         color: $color-green;
