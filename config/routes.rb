@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   get 'faq', to: 'faq#index', as: 'faq_index'
   
   get 'search/estacionamiento'
-
+  get 'legal/index'
   # POST
   post 'auth/login'
   post 'auth/lost_password'
+  
 
   namespace "api" do
     namespace "v1" do
