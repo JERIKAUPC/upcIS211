@@ -1,0 +1,36 @@
+<div class="block-form-auth">
+    <h2 class="title">Inicia sesión</h2>
+
+    <form class="form-sign-in" action="<%= auth_login_path() %>" method="post">
+        <div class="form-group input-icon">
+            <input type="email" name="email" placeholder="Correo electrónico" autocomplete="off" value="" class="form-control">
+            <%= icon('envelope') %>
+        </div>
+        <div class="form-group input-icon">
+            <input type="password" name="password" placeholder="Contraseña" value="" class="form-control">
+            <%= icon('lock') %>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-send">
+                <span class="normal">Ingresar</span>
+                <span class="sending"><%= icon('refresh fa-spin')%> Ingresando...</span>
+            </button>
+            <div class="error_ajax"></div>
+        </div>
+        <div class="form-group more-options">
+            <span>
+                <a href="#" class="popup-open" data-popup="lost-password">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            </span>
+        </div>
+        <div class="form-group more-options">
+            <span>
+                ¿No tienes una cuenta?
+                <a href="#" class="popup-open" data-popup="register">
+                    Regístrate
+                </a>
+            </span>
+        </div>
+    </form>
+</div>

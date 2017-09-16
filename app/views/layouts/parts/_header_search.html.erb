@@ -9,7 +9,7 @@
     </div>
 
     <ul class="nav nav_right">
-        <li><%= link_to 'Ofrece un lugar', "#", { :class => 'btn btn-default' } %></li>
+        <li><%= link_to 'Ofrece un lugar', new_parking_path, { :class => 'btn btn-default' } %></li>
         <% if ! isLogged() %>
             <li><%= link_to 'Inicia sesión', "#", { :class => 'popup-open', :data => { :popup => 'login' } } %></li>
             <li><%= link_to 'Regístrate', "#", { :class => 'popup-open', :data => { :popup => 'register' } } %></li>

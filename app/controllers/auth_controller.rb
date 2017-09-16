@@ -1,5 +1,10 @@
 class AuthController < ApplicationController
+    layout 'only_header'
     include ApplicationHelper
+    
+    def index
+        @url = params[:url]
+    end
 
     def login
         email = params[:email]
