@@ -62,7 +62,21 @@ var GoogleMap = {
         }
     },
 
-    ubicart: function(arraytemporal,obj){
+    ubicart: function(){
+      var cm2 =GoogleMap.center;
+      var nz2 = GoogleMap.obj.getZoom();
+      var dv2 =$("#map").height()*Math.PI*Math.cos(cm2.lat*Math.PI/180)/Math.pow(2,nz2+2);
+      var dh2 =$("#map").width()*Math.PI*Math.cos(cm2.lng*Math.PI/180)/Math.pow(2,nz2);
+      
+      var datosjs = {
+        lati: GoogleMap.obj.getCenter().lat(),
+        longi: GoogleMap.obj.getCenter().lng(),
+        dla: dv2,
+        dlo: dh2
+      };
+      var arraytemporal=[];
+      $.getJSON(GoogleMap.urlser, datosjs, function(response){
+          arraytemporal=response.data;
           var pinpon=-1;
           var numid=1;
           var cm =GoogleMap.center;
@@ -70,10 +84,10 @@ var GoogleMap = {
           var dv =$("#map").height()*Math.PI*Math.cos(cm.lat*Math.PI/180)/Math.pow(2,nz+2);
           var dh =$("#map").width()*Math.PI*Math.cos(cm.lng*Math.PI/180)/Math.pow(2,nz);
           
-        document.getElementById('listoffers').innerHTML="";
+          document.getElementById('listoffers').innerHTML="";
         
 
-        arraytemporal.forEach( function(valor, indice, arreglo) {
+          arraytemporal.forEach( function(valor, indice, arreglo) {
           var la =parseFloat(valor.location.split(",")[0]);
           var lo =parseFloat(valor.location.split(",")[1]);
           
@@ -95,8 +109,8 @@ var GoogleMap = {
            document.getElementById('listoffers').innerHTML+=GoogleMap.plantilla(valor,pinpon,numid); 
             pinpon=pinpon*(-1);
             numid+=1;
-          }
-        });
+            }
+           });
         
         var redsqrt = [
           {lat: cm.lat+dv, lng: cm.lng+dh},
@@ -122,19 +136,19 @@ var GoogleMap = {
           
         });
         sqrtONmap.setMap(GoogleMap.obj);
-        
-        },
+      });
+    },
         
     conectarDB: function(inw,obj){
-      var datosjs = {
-        user_id: 1
-      };
+      //var datosjs = {
+      //  user_id: 1
+      //};
       
-      var arraytemporal=[];
+      //var arraytemporal=[];
     
-      $.getJSON(GoogleMap.urlser, datosjs, function(response){
+      //$.getJSON(GoogleMap.urlser, datosjs, function(response){
         
-        arraytemporal=response.data;
+        //arraytemporal=response.data;
         //verificar centro
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -146,15 +160,15 @@ var GoogleMap = {
             inw.setPosition(GoogleMap.center);
             inw.setContent('Ud esta aqui!');
             obj.setCenter(GoogleMap.center);
-            GoogleMap.ubicart(arraytemporal,obj);
+            GoogleMap.ubicart();
           }, function() {
-            GoogleMap.ubicart(arraytemporal);
+            GoogleMap.ubicart();
             GoogleMap.handleLocationError(true, inw, obj.getCenter());
           });
 
           }
 
-      });
+      //});
 
     },
     
@@ -173,10 +187,10 @@ var GoogleMap = {
         GoogleMap.markers=[];
         GoogleMap.center ={lat: GoogleMap.obj.getCenter().lat() , lng: GoogleMap.obj.getCenter().lng() };
 
-        $.getJSON(GoogleMap.urlser, datosjs, function(response){
-          arraytemporal=response.data;
-          GoogleMap.ubicart(arraytemporal);
-        });
+        //$.getJSON(GoogleMap.urlser, datosjs, function(response){
+         // arraytemporal=response.data;
+          GoogleMap.ubicart();
+        //});
        },
     
     handleLocationError: function (browserHasGeolocation, infoWindow, pos) {
