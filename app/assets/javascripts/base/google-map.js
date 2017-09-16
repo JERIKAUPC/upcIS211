@@ -114,7 +114,7 @@ var GoogleMap = {
           fillColor: '#FF0000',
           fillOpacity: 0.08
         });
-        GoogleMap.grafico=[sqrtONmap];
+        GoogleMap.grafico.push(sqrtONmap);
         sqrtONmap.addListener('click', function(e) {
           // 3 seconds after the center of the map has changed, pan back to the
           // marker.
@@ -126,7 +126,9 @@ var GoogleMap = {
         },
         
     conectarDB: function(inw,obj){
-      var datosjs = {};
+      var datosjs = {
+        user_id: 1
+      };
       
       var arraytemporal=[];
     
@@ -161,7 +163,11 @@ var GoogleMap = {
         for (var i = 0; i < GoogleMap.markers.length; i++) {
           GoogleMap.markers[i].setMap(null);
         }
-        GoogleMap.grafico[0].setMap(null);
+        for (var i = 0; i < GoogleMap.grafico.length; i++) {
+          GoogleMap.grafico[i].setMap(null);
+        }
+        
+        
         console.log(GoogleMap.grafico);
 
         GoogleMap.markers=[];

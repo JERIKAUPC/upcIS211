@@ -4,6 +4,7 @@ module Api
             skip_before_action :verify_authenticity_token
 
             def index
+                #user_id = params[:user_id]
                 offers = Offer.order('created_at DESC')
                 render json: {status: 'SUCCESS', message: 'Loaded offers', data:offers},status: :ok
             end
