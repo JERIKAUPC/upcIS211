@@ -1,21 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  User_id: 1
-  height: 1
-  width: 1
-  length: 1
-  date_start: 2017-09-01
-  date_end: 2017-09-01
+  property_type_id: 1
   address: MyString
-  location: MyString
+  latitude: 9.99
+  longitude: 9.99
+  quantity: 1
+  days: MyString
+  horary_id: 1
+  check_in_time: 2017-09-17 09:52:40
+  check_out_time: 2017-09-17 09:52:40
+  access_form_id: 1
+  is_independent: 1
+  leave_keys: 1
+  move_car: 1
+  indications_first_day: MyText
+  image_1: MyString
+  image_2: MyString
+  image_entrance: MyString
+  price: MyString
+  status: 1
 
 two:
-  User_id: 1
-  height: 1
-  width: 1
-  length: 1
-  date_start: 2017-09-01
-  date_end: 2017-09-01
+  property_type_id: 1
   address: MyString
-  location: MyString
+  latitude: 9.99
+  longitude: 9.99
+  quantity: 1
+  days: MyString
+  horary_id: 1
+  check_in_time: 2017-09-17 09:52:40
+  check_out_time: 2017-09-17 09:52:40
+  access_form_id: 1
+  is_independent: 1
+  leave_keys: 1
+  move_car: 1
+  indications_first_day: MyText
+  image_1: MyString
+  image_2: MyString
+  image_entrance: MyString
+  price: MyString
+  status: 1
