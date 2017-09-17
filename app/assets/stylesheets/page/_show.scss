@@ -1,0 +1,36 @@
+.sp-input{
+    width:50%;
+    border-radius: 5px;
+    line-height: 20px;
+}
+
+.sp-iconfield{
+    margin-left: 5px;
+    margin-bottom: 10px;
+    font-size: 120%;
+
+    
+}
+
+.sp-form {
+    div {
+        div {
+            margin-left: 5px;
+            margin-bottom: 10px;
+            font-size: 120%;
+        }
+        
+        input, select {
+            width:50%;
+            border-radius: 5px;
+            line-height: 20px;
+            margin-bottom: 20px;
+        }
+        
+        select {
+            height: 25px;
+            
+        }
+        
+    }
+}

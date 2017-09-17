@@ -1,2 +1,54 @@
-<h1>Profile#show</h1>
-<p>Find me in app/views/profile/show.html.erb</p>
+<%- model_class = User -%>
+<% u=User.find(cookies[:userID]) %>
+
+<form  class="sp-form" action="<%= api_v1_users_path() %>/<%= u.id %>" method="put">
+    <div>
+        <div class="sp-iconfield"><%= icon('user') %> Nombre completo</div>
+        <input class="sp-input" type="text" name="name" placeholder="Nombre completo" autocomplete="off" value="<%= u.name %>">
+    </div>
+    <div>
+        <div><%= icon('envelope') %> Correo electronico</div>
+        <input type="email" name="email" placeholder="Correo electrónico" autocomplete="off" value="<%= u.email %>">
+    </div>
+    <div>
+        <div><%= icon('address-card') %> Documento de identidad</div>
+        <input type="text" name="dni" placeholder="DNI" autocomplete="off" value="<%= u.dni %>">
+    </div>
+    <div>
+        <div><%= icon('phone') %> Telefono</div>
+        <input type="text" name="phone" placeholder="Número de teléfono" autocomplete="off" value="<%= u.phone %>">
+    </div>
+    <div>
+        <div><%= icon('venus-mars') %> Sexo</div>
+        <select name="gender">
+            <option value="Masculino" <%= u.gender == "Masculino" ? "selected":"" %>>
+                Masculino
+            </option>
+            <option value="Femenino" <%= u.gender == "Femenino" ? "selected":"" %>>
+                Femenino
+            </option>
+            <option value="Otro" <%= u.gender == "Otro" ? "selected":"" %>>
+                Otro
+            </option>
+            <option value="" <%= ((u.gender == "") or (u.gender == nil)) ? "selected":"" %>>
+                Sin especificar
+            </option>
+        </select>
+    </div>
+    <div>
+        <div><%= icon('table') %> Fecha de nacimiento</div>
+        <input type="date" name="birthday" placeholder="Fecha de nacimiento" autocomplete="off" value="<%= u.birthday %>">
+    </div>
+    <div>
+        <div><%= icon('image') %> Avatar</div>
+        <input type="text" name="picture" placeholder="Avatar" autocomplete="off" value="<%= u.picture %>">
+    </div>
+    <div>
+        <button type="submit">
+            <span class="normal">Update</span>
+        </button>
+        <div class="error_ajax"></div>
+    </div>
+</form>
+
+
