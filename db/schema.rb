@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20170917145226) do
 
   create_table "access_forms", force: :cascade do |t|
-    t.string "access_form"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170917145226) do
     t.string "image_2"
     t.string "image_entrance"
     t.decimal "price", precision: 20, scale: 2
-    t.integer "status"
+    t.integer "status", default: 1
     t.integer "access_form_id"
     t.integer "property_type_id"
     t.integer "vehicle_type_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170917145226) do
   end
 
   create_table "property_types", force: :cascade do |t|
-    t.string "property"
+    t.string "name"
     t.string "icon_class"
     t.string "icon_image"
     t.datetime "created_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170917145226) do
   end
 
   create_table "vehicle_types", force: :cascade do |t|
-    t.string "vehicle"
+    t.string "name"
     t.string "icon_class"
     t.string "icon_image"
     t.integer "order"
