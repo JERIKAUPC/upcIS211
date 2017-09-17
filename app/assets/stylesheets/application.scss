@@ -10,6 +10,7 @@
 @import "base/global";
 
 // Components
+@import "base/block";
 @import "base/button";
 @import "base/popup";
 @import "base/form";
@@ -25,7 +26,9 @@
 @import "page/search";
 @import "page/contact";
 @import "page/faq";
+@import "page/auth";
 //@import "page/search_opc";
+@import "legal";
 
 // Alertas
 @import "base/alert"

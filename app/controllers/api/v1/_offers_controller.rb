@@ -4,7 +4,13 @@ module Api
             skip_before_action :verify_authenticity_token
 
             def index
-                offers = Offer.order('created_at DESC')
+                #user_id = params[:user_id]
+                lati= params[:lati]
+                longi= params[:longi]
+                dla= params[:dla]
+                dlo= params[:dlo]
+                #offers = Offer.order('created_at DESC')
+                offers = Offer.where('created_at DESC')
                 render json: {status: 'SUCCESS', message: 'Loaded offers', data:offers},status: :ok
             end
 

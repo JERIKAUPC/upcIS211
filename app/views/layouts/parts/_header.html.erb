@@ -5,11 +5,11 @@
 <div class="nav_menu" id="menu_principal">
     <ul class="nav nav_left">
         <li><%= link_to '¿Buscas un lugar?', search_index_path %></li>
-        <li><%= link_to '¿Tienes espacio disponible?', "#" %></li>
+        <li><%= link_to '¿Tienes espacio disponible?', new_parking_path %></li>
     </ul>
 
     <ul class="nav nav_right">
-        <li><%= link_to 'Ofrece un lugar', "#", { :class => 'btn btn-default' } %></li>
+        <li><%= link_to 'Ofrece un lugar', new_parking_path, { :class => 'btn btn-default' } %></li>
         <% if ! isLogged() %>
             <li><%= link_to 'Inicia sesión', "#", { :class => 'popup-open', :data => { :popup => 'login' } } %></li>
             <li><%= link_to 'Regístrate', "#", { :class => 'popup-open', :data => { :popup => 'register' } } %></li>
