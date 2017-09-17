@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'profile/show'
 
   get 'profile/reservation'
@@ -31,7 +30,7 @@ Rails.application.routes.draw do
   # POST
   post 'auth/login'
   post 'auth/lost_password'
-  
+
 
   get 'parking/' => redirect("/search")
   resources :parking, :except => [:index]
