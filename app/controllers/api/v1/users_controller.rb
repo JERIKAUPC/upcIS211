@@ -2,6 +2,7 @@ module Api
     module V1
         class UsersController < ApplicationController
             include ApplicationHelper
+            skip_before_action :verify_authenticity_token
 
             def index
                 users = User.order('created_at DESC')
@@ -28,6 +29,15 @@ module Api
                     render json: {status: 'ERROR', message: 'User exist', data:user},status: :not_acceptable
                 end
             end
+            
+            def update
+                user = User.find(params[:id])
+                if user.update_attributes(user_params)
+                    render json: {status: 'SUCCESS', message: 'Updated user', data:user},status: :ok
+                else
+                    render json: {status: 'ERROR', message: 'User not updated', data:user},status: :unprocessable_entity
+                end
+            end
 
             def destroy
                 user = User.find(params[:id])
@@ -38,7 +48,7 @@ module Api
 
             private
             def user_params
-                params.permit(:name,:email,:password,:phone)
+                params.permit(:name,:email,:password,:phone,:dni,:birthday,:gender,:picture)
             end
         end
     end
