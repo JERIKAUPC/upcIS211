@@ -10,17 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901045120) do
+ActiveRecord::Schema.define(version: 20170917145226) do
+
+  create_table "access_forms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "offers", force: :cascade do |t|
-    t.integer "User_id"
-    t.integer "height"
-    t.integer "width"
-    t.integer "length"
-    t.date "date_start"
-    t.date "date_end"
+    t.integer "user_id"
     t.string "address"
-    t.string "location"
+    t.decimal "latitude", precision: 20, scale: 14
+    t.decimal "longitude", precision: 20, scale: 14
+    t.integer "quantity"
+    t.string "days"
+    t.integer "horary_id"
+    t.time "check_in_time"
+    t.time "check_out_time"
+    t.integer "is_independent"
+    t.integer "leave_keys"
+    t.integer "move_car"
+    t.text "indications_first_day"
+    t.string "image_1"
+    t.string "image_2"
+    t.string "image_entrance"
+    t.decimal "price", precision: 20, scale: 2
+    t.integer "status", default: 1
+    t.integer "access_form_id"
+    t.integer "property_type_id"
+    t.integer "vehicle_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_form_id"], name: "index_offers_on_access_form_id"
+    t.index ["property_type_id"], name: "index_offers_on_property_type_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+    t.index ["vehicle_type_id"], name: "index_offers_on_vehicle_type_id"
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
+    t.string "icon_class"
+    t.string "icon_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +68,15 @@ ActiveRecord::Schema.define(version: 20170901045120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "vehicle_types", force: :cascade do |t|
+    t.string "name"
+    t.string "icon_class"
+    t.string "icon_image"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vehicles", force: :cascade do |t|
