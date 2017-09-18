@@ -1,0 +1,33 @@
+.est-leftcol{
+    background: $color-purewhite;
+     float:left;
+     width:calc(100% - 320px);
+     padding:80px;
+}
+
+.est-rightcol{
+    background: $color-purewhite;
+     float:right;
+     width:300px;
+     padding:80px;
+}
+
+.est-icono{
+    font-size:200%;
+}
+
+.est-icons{
+    text-align:right;
+    Color:gold;
+}
+
+.est-img{
+    max-width:50%;
+    height:auto;
+    width:auto/9;
+}
+
+.est-carct{
+    float:left;
+    width:33.333333%;
+}
