@@ -40,7 +40,7 @@ module Api
 
             private
             def offer_params
-                params.permit(:User_id,:height,:width,:length,:date_start,:date_end,:address,:location)
+                params.permit(:user_id,:address,:latitude,:longitude,:quantity,:days,:horary_id,:check_in_time,:check_out_time,:is_independent,:leave_keys,:move_car,:indications_first_day,:image_1,:image_2,:image_entrance,:price,:status,:access_form_id,:property_type_id,:vehicle_type_id)
             end
             #hola
         end
