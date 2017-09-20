@@ -92,7 +92,20 @@ var GoogleMap = {
           
           document.getElementById('listoffers').innerHTML="";
         
-
+          
+          var arrayampliado=[];
+          arraytemporal.forEach( function(valor, indice, arreglo) {
+            var distancia=Math.pow(Math.pow(cm.lat-valor.latitude,2)+Math.pow(cm.lng-valor.longitude,2),0.5);
+            arrayampliado.push({latitude: valor.latitude, longitude: valor.longitude, distance: distancia, location:"Cerca a tu casa", address: valor.address})
+          }
+          );
+          arrayampliado=arrayampliado.sort(function (a, b) {
+            return a.distance - b.distance ;
+          });
+          
+          arraytemporal=arrayampliado;
+          console.log(cm);
+          console.log(arraytemporal);
           arraytemporal.forEach( function(valor, indice, arreglo) {
           //var la =parseFloat(valor.location.split(",")[0]);
           //var lo =parseFloat(valor.location.split(",")[1]);
