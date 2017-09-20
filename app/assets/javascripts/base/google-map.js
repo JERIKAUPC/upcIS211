@@ -7,6 +7,7 @@ var GoogleMap = {
     markers : [],   //Marcadores actuales
     grafico : [],   //zona actual
     urlser : '/api/v1/offers', //url servicio
+    consult: null,
 
     center: {
         lat: -12.077450,
@@ -28,7 +29,7 @@ var GoogleMap = {
 
         //this.addMarker( this.center );
         this.inw = new google.maps.InfoWindow({map: this.obj});
-        this.obj.addListener('click', function(e) {
+        this.obj.addListener('center_changed', function(e) {
           // 3 seconds after the center of the map has changed, pan back to the
           // marker.
           window.setTimeout(GoogleMap.extdata(e), 3000);
@@ -75,7 +76,12 @@ var GoogleMap = {
         dlo: dh2
       };
       var arraytemporal=[];
-      $.getJSON(GoogleMap.urlser, datosjs, function(response){
+      if (GoogleMap.consult != null){
+        GoogleMap.consult.abort();
+        GoogleMap.consult=null;
+        console.log("Abortado");
+      }
+      GoogleMap.consult = $.getJSON(GoogleMap.urlser, datosjs, function(response){
           arraytemporal=response.data;
           var pinpon=-1;
           var numid=1;
@@ -88,8 +94,10 @@ var GoogleMap = {
         
 
           arraytemporal.forEach( function(valor, indice, arreglo) {
-          var la =parseFloat(valor.location.split(",")[0]);
-          var lo =parseFloat(valor.location.split(",")[1]);
+          //var la =parseFloat(valor.location.split(",")[0]);
+          //var lo =parseFloat(valor.location.split(",")[1]);
+          var la =valor.latitude;
+          var lo =valor.longitude;
           
           console.log(""+la+" "+lo+" contra: "+(cm.lat+dv)+" y "+(cm.lat-dv));
           if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
