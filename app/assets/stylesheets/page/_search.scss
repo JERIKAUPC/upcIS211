@@ -129,13 +129,14 @@
 
 .box-oferta{
         //border-style: ridge;
-        //width:100%;
+        width:60%;
         text-align:left;
         margin:0;
         display:inline-block;
         background-color: $color-purewhite;
         border-radius: 5px;
         padding:10px;
+        position: relative;
         @media all and (max-width: 870px) {
                         font-size: 6px;
                         padding: 6px;
@@ -217,3 +218,11 @@
              display: inline-block;
         }
 }*/
+
+.of-price {
+    display: inline-block;
+    position:relative;
+    right: 5%;
+    top: 5%;
+    position: absolute;
+}
