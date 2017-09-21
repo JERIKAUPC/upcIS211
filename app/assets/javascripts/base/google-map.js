@@ -7,6 +7,7 @@ var GoogleMap = {
     markers : [],   //Marcadores actuales
     grafico : [],   //zona actual
     urlser : '/api/v1/offers', //url servicio
+    consult: null,
 
     center: {
         lat: -12.077450,
@@ -28,7 +29,7 @@ var GoogleMap = {
 
         //this.addMarker( this.center );
         this.inw = new google.maps.InfoWindow({map: this.obj});
-        this.obj.addListener('click', function(e) {
+        this.obj.addListener('center_changed', function(e) {
           // 3 seconds after the center of the map has changed, pan back to the
           // marker.
           window.setTimeout(GoogleMap.extdata(e), 3000);
@@ -56,9 +57,9 @@ var GoogleMap = {
     
     plantilla: function (of,clase,nid){
         if (clase==1){
-            return "<div id='o"+ nid +"' class='box-oferta box-oferta2'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+            return "<div id='o"+ nid +"' class='box-oferta box-oferta2'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
         } else {
-            return "<div id='o"+ nid +"' class='box-oferta'><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i> NOMBRE DE OFERTA</p><p>  <i class='fa fa-flag-o'></i>"  + of.address +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+            return "<div id='o"+ nid +"' class='box-oferta'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
         }
     },
 
@@ -75,7 +76,12 @@ var GoogleMap = {
         dlo: dh2
       };
       var arraytemporal=[];
-      $.getJSON(GoogleMap.urlser, datosjs, function(response){
+      if (GoogleMap.consult != null){
+        GoogleMap.consult.abort();
+        GoogleMap.consult=null;
+        console.log("Abortado");
+      }
+      GoogleMap.consult = $.getJSON(GoogleMap.urlser, datosjs, function(response){
           arraytemporal=response.data;
           var pinpon=-1;
           var numid=1;
@@ -86,10 +92,25 @@ var GoogleMap = {
           
           document.getElementById('listoffers').innerHTML="";
         
-
+          
+          var arrayampliado=[];
           arraytemporal.forEach( function(valor, indice, arreglo) {
-          var la =parseFloat(valor.location.split(",")[0]);
-          var lo =parseFloat(valor.location.split(",")[1]);
+            var distancia=Math.pow(Math.pow(cm.lat-valor.latitude,2)+Math.pow(cm.lng-valor.longitude,2),0.5);
+            arrayampliado.push({latitude: valor.latitude, longitude: valor.longitude, distance: distancia, location:"Cerca a tu casa", address: valor.address, price:valor.price, days:valor.days})
+          }
+          );
+          arrayampliado=arrayampliado.sort(function (a, b) {
+            return a.distance - b.distance ;
+          });
+          
+          arraytemporal=arrayampliado;
+          console.log(cm);
+          console.log(arraytemporal);
+          arraytemporal.forEach( function(valor, indice, arreglo) {
+          //var la =parseFloat(valor.location.split(",")[0]);
+          //var lo =parseFloat(valor.location.split(",")[1]);
+          var la =valor.latitude;
+          var lo =valor.longitude;
           
           console.log(""+la+" "+lo+" contra: "+(cm.lat+dv)+" y "+(cm.lat-dv));
           if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
