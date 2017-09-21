@@ -17,6 +17,6 @@ class ProfileController < ApplicationController
   end
 
   def publish
-    #Tus ofertas publicadas Gabriel
+     @Offers = Offer.all
   end
 end

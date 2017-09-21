@@ -1,1 +1,37 @@
-<h1>Ofertas publicadas por mi</h1>
+ <%- ofertas = Offer -%>
+ <h1>Ofertas publicadas por mi</h1>
+ <div>
+      <div class="est-text">Direccion</div>
+      <div class="est-text">quantity</div>    
+      <div class="est-text">days</div>
+      <div class="est-text">check_in_time</div>
+      <div class="est-text">check_out_time</div>
+      <div class="est-text">is_independent</div>
+      <div class="est-text">leave_keys</div>
+      <div class="est-text">move_car</div>
+      <div class="est-text">indications_first_day</div>
+      <div class="est-text">price</div>
+      <div class="est-text">status</div>
+      <div class="est-text">property_type</div>
+      <div class="est-text">vehicle_type</div>
+  </div>
+
+  <div>
+    <% ofertas.all.each do |oft| %>
+        <div class="est-text"><%= oft.address %></div>
+        <div class="est-text"><%= oft.latitude %></div>
+        <div class="est-text"><%= oft.quantity %></div>
+        <div class="est-text"><%= oft.days %></div>
+        <div class="est-text"><%= oft.horary_id %></div>
+        <div class="est-text"><%  oft.check_in_time %></div>
+        <div class="est-text"><%= oft.check_out_time %></div>
+        <div class="est-text"><%= oft.is_independent %></div>
+        <div class="est-text"><%= oft.leave_keys %></div>
+        <div class="est-text"><%= oft.move_car %></div>
+        <div class="est-text"><%= oft.indications_first_day %></div>
+        <div class="est-text"><%= oft.price %></div>
+        <div class="est-text"><%= oft.status %></div>
+        <div class="est-text"><%= oft.property_type %></div>
+        <div class="est-text"><%= oft.vehicle_type %></div>
+    <% end %>
+  </div>
