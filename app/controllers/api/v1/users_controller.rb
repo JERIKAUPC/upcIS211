@@ -32,9 +32,12 @@ module Api
             
             def update
                 user = User.find(params[:id])
-                if user.update_attributes(user_params)
+                puts user.password_digest
+                #user.name=params[:name]
+                if ( user.update_attribute(:name, params[:name] ) && user.update_attribute(:email, params[:email] ) && user.update_attribute(:dni, params[:dni ] ) && user.update_attribute(:phone, params[:phone] ) && user.update_attribute(:gender, params[:gender] ) && user.update_attribute(:birthday, params[:birthday] ) && user.update_attribute(:picture, params[:picture] ))
                     render json: {status: 'SUCCESS', message: 'Updated user', data:user},status: :ok
                 else
+                    puts user.errors.full_messages
                     render json: {status: 'ERROR', message: 'User not updated', data:user},status: :unprocessable_entity
                 end
             end
@@ -48,7 +51,7 @@ module Api
 
             private
             def user_params
-                params.permit(:name,:email,:password,:phone,:dni,:birthday,:gender,:picture)
+                params.permit( :id,:name,:email,:password,:phone,:dni,:birthday,:gender,:picture)
             end
         end
     end

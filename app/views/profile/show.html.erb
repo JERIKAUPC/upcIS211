@@ -44,10 +44,12 @@
         <input type="text" name="picture" placeholder="Avatar" autocomplete="off" value="<%= u.picture %>">
     </div>
     <div>
-        <button type="submit">
-            <span class="normal">Update</span>
-        </button>
-        <div class="error_ajax"></div>
+        <div onclick="change_params()">
+            <span class="show-boton">Update</span>
+        </div>
+        <div class="show-error" id="error"><%= icon("times") %> Error</div>
+        <div class="show-load"  id="loading"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>Cargando...</div>
+        <div class="show-ok" id="ok"><%= icon("check") %> Datos actualizados!</div>
     </div>
 </form>
 
