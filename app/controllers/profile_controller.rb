@@ -17,6 +17,7 @@ class ProfileController < ApplicationController
   end
 
   def publish
-    #Tus ofertas publicadas Gabriel
+      #@Offers = Offer.all
+      @Offers = Offer.all.where("user_id=#{cookies[:userID]}")
   end
 end
