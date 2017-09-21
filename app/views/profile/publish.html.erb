@@ -1,37 +1,46 @@
- <%- ofertas = Offer -%>
  <h1>Ofertas publicadas por mi</h1>
- <div>
-      <div class="est-text">Direccion</div>
-      <div class="est-text">quantity</div>    
-      <div class="est-text">days</div>
-      <div class="est-text">check_in_time</div>
-      <div class="est-text">check_out_time</div>
-      <div class="est-text">is_independent</div>
-      <div class="est-text">leave_keys</div>
-      <div class="est-text">move_car</div>
-      <div class="est-text">indications_first_day</div>
-      <div class="est-text">price</div>
-      <div class="est-text">status</div>
-      <div class="est-text">property_type</div>
-      <div class="est-text">vehicle_type</div>
-  </div>
-
-  <div>
-    <% ofertas.all.each do |oft| %>
-        <div class="est-text"><%= oft.address %></div>
-        <div class="est-text"><%= oft.latitude %></div>
-        <div class="est-text"><%= oft.quantity %></div>
-        <div class="est-text"><%= oft.days %></div>
-        <div class="est-text"><%= oft.horary_id %></div>
-        <div class="est-text"><%  oft.check_in_time %></div>
-        <div class="est-text"><%= oft.check_out_time %></div>
-        <div class="est-text"><%= oft.is_independent %></div>
-        <div class="est-text"><%= oft.leave_keys %></div>
-        <div class="est-text"><%= oft.move_car %></div>
-        <div class="est-text"><%= oft.indications_first_day %></div>
-        <div class="est-text"><%= oft.price %></div>
-        <div class="est-text"><%= oft.status %></div>
-        <div class="est-text"><%= oft.property_type %></div>
-        <div class="est-text"><%= oft.vehicle_type %></div>
+ 
+<div>
+    <% @Offers.each do |offer| %>
+        <div class="est-text">
+            <div>Direccion</div>
+            <div class="est-text2"><%= offer.address %></div>
+        </div>
+        <div class="est-text">
+            <div>Cantidad</div>
+            <div class="est-text2"><%= offer.quantity %></div>
+        </div>
+        <div class="est-text">
+            <div>Dias</div>
+            <div class="est-text2"><%= offer.days %></div>
+        </div>
+        <div class="est-text">
+            <div>Horario</div>
+            <div class="est-text2"><%= offer.horary_id %></div>
+        </div>
+        <div class="est-text">
+            <div>check in</div>
+            <div class="est-text2"><%  offer.check_in_time %></div>
+        </div>
+        <div class="est-text">
+            <div>Check out</div>
+            <div class="est-text2"><%= offer.check_out_time %></div>
+        </div>
+        <div class="est-text">
+            <div>Precio</div>
+            <div class="est-text2"><%= offer.price %></div>
+        </div>
+        <div class="est-text">
+            <div>Estado</div>
+            <div class="est-text2"><%= offer.status %></div>
+        </div>
+        <div class="est-text">
+            <div>Tipo Propiedad</div>
+            <div class="est-text2"><%= offer.property_type.name %></div>
+        </div>
+        <div class="est-text">
+            <div>Tipo Vehiculo</div>
+            <div class="est-text2"><%= offer.vehicle_type.name %></div>
+        </div>
     <% end %>
-  </div>
+</div>
