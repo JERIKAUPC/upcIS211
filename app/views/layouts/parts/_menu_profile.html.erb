@@ -1,0 +1,14 @@
+<h2 class="navigation-header">Perfil</h2>
+    <ul>
+        <li><%= link_to "Datos de usuario", profile_show_path, :class => current_class(profile_show_path) %></li>
+        <li><%= link_to "Cambiar clave", "#", :class => current_class("#") %></li>
+    </ul>
+<h2 class="navigation-header">Lugares Pedidos</h2>
+    <ul>
+        <li><%= link_to "Solicitados", profile_reservation_path, :class => current_class(profile_reservation_path) %></li>
+    </ul>
+<h2 class="navigation-header">Lugares Ofrecidos</h2>
+    <ul>
+        <li><%= link_to "Publicaciones", profile_publish_path, :class => current_class(profile_publish_path) %></li>
+        <li><%= link_to "Reservas", profile_order_path, :class => current_class(profile_order_path) %></li>
+    </ul>

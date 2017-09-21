@@ -2,6 +2,9 @@
     width:50%;
     border-radius: 5px;
     line-height: 20px;
+    @media all and (max-width: 600px) {
+                        width: 90%;
+    }
 }
 
 .sp-iconfield{
@@ -25,6 +28,15 @@
             border-radius: 5px;
             line-height: 20px;
             margin-bottom: 20px;
+            @media all and (max-width: 900px) {
+                        width: 90%;
+                }
+            @media all and (max-width: 500px) {
+                        width: 100%;
+                }
+            @media all and (max-width: 00px) {
+                        width: 120%;
+                }
         }
         
         select {
