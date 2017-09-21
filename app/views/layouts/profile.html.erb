@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking</title>
+    <%= favicon_link_tag 'favicon/favicon.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<body class="static">
+    <header>
+        <div class="content">
+            <%= render 'layouts/parts/header' %>
+        </div>
+    </header>
+
+    <div class="main content">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <div class="sidebar-nav">
+            <div class="sidebar-content">
+                <h2 class="navigation-header">Perfil</h2>
+                <ul>
+                    <li><%= link_to "Datos de usuario", profile_show_path, :class => current_class(profile_show_path) %></li>
+                    <li><%= link_to "Cambiar clave", "#", :class => current_class("#") %></li>
+                </ul>
+                <h2 class="navigation-header">Lugares</h2>
+                <ul>
+                    <li><%= link_to "Ofrecidos", profile_publish_path, :class => current_class(profile_publish_path) %></li>
+                    <li>
+                        <%= link_to "Reservados", profile_order_path, :class => current_class(profile_order_path) %>
+                        
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="content-page">
+            <%= yield %>
+        </div>
+    </div>
+
+    <%= render 'layouts/parts/scripts' %>
+</body>
+</html>
