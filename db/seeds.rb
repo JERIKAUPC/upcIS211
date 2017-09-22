@@ -128,3 +128,4 @@ PropertyType.create([
     icon_image: nil
   }
 ])
+

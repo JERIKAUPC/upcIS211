@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       resources :users, :except => [:new, :edit]
       resources :vehicles, :except => [:new, :edit]
       resources :offers, :except => [:new, :edit]
+      resources :deals, :except => [:new, :edit]
     end
   end
 end

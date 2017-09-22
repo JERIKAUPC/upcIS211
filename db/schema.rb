@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917145226) do
+ActiveRecord::Schema.define(version: 20170922152331) do
 
   create_table "access_forms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deals", force: :cascade do |t|
+    t.integer "offer_id"
+    t.integer "user_id"
+    t.date "ini_date"
+    t.date "fin_date"
+    t.integer "canceled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_deals_on_offer_id"
+    t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
   create_table "offers", force: :cascade do |t|

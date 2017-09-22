@@ -1,2 +1,20 @@
 <h1>Mis Ofertas Reservadas</h1>
-<p>Find me in app/views/profile/reservation.html.erb</p>
+
+<% todo_deals=Deal.where("user_id=#{cookies[:userID]}") %>
+<% if todo_deals.size == 0 %>
+<%= "No tienes ofertas" %>
+<% else %>
+<h2><%= "Estas son tus ofertas"%></h2><br>
+<% end %>
+<div style='border: solid 1px; padding: 5px; margin: 5px; display: inline-block; border-radius: 10px;'>
+<% todo_deals.each do |d| %>
+<p>Propietario: <%=  User.find((Offer.find(d.offer_id).user_id)).name %></p>
+<p>Direccion: <%=  Offer.find(d.offer_id).address %></p>
+<p>Fecha de inicio: <%=  d.ini_date %></p>
+<p>Fecha de fin: <%=  d.fin_date %></p>
+<p>Cancelado: <%= (d.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
+<%= %>
+<%= %>
+<%= %>
+<% end %>
+</div>
