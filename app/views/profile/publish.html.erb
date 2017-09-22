@@ -1,6 +1,23 @@
- <h1>Ofertas publicadas por mi</h1>
- 
-<div class="est-win">
+<h1>Ofertas publicadas por mi</h1>
+<div>
+<% if @Offers.size == 0 %>
+<h2><%= "Aun no publicas ofertas" %></h2>
+<% else %>
+    <% @Offers.each do |offer| %>
+    <div class="pub-titulo"><%= offer.address %></div>
+    <p><span>Numero de espacios: </span><span><%= offer.quantity %></span></p>
+    <p><span>Dias: </span><span><%= offer.days %></span></p>
+    <% hora=offer.check_in_time.to_s.split(/ /) %>
+    <% hora2=offer.check_out_time.to_s.split(/ /) %>
+    <p><span>Horario: </span><span><%= hora[1] %> a <%= hora2[1] %></span></p>
+    <p><span>Precio: </span><span><%= offer.price %></span></p>
+    <hr>
+    <% end %>
+<% %>
+<% end %>
+</div>
+
+<!-- <div class="est-win">
     <% @Offers.each do |offer| %>
         <div class="est-text">
             <div>Direccion</div>
@@ -44,3 +61,4 @@
         </div>
     <% end %>
 </div>
+-->
