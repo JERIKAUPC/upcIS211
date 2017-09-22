@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
-  layout 'only_header'
+  #layout 'only_header'
+  layout 'profile'
   include ApplicationHelper
   
   before_action :authenticate

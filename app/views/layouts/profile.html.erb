@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking</title>
+    <%= favicon_link_tag 'favicon/favicon.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<body class="static">
+    <header>
+        <div class="content">
+            <%= render 'layouts/parts/header' %>
+        </div>
+    </header>
+
+    <div class="main content">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+        <div class="sidebar-nav">
+            <div class="sidebar-content">
+                <%= render("layouts/parts/menu_profile")%>
+            </div>
+        </div>
+        <div class="content-page">
+            <%= yield %>
+        </div>
+    </div>
+
+    <%= render 'layouts/parts/scripts' %>
+</body>
+</html>

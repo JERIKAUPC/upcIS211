@@ -8,6 +8,7 @@ var GoogleMap = {
     grafico : [],   //zona actual
     urlser : '/api/v1/offers', //url servicio
     consult: null,
+    painted: [],
 
     center: {
         lat: -12.077450,
@@ -56,10 +57,17 @@ var GoogleMap = {
     },
     
     plantilla: function (of,clase,nid){
-        if (clase==1){
-            return "<div id='o"+ nid +"' class='box-oferta box-oferta2'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+        if ((of.image_1 == "") || (of.image_1 == null)){
+          var imageg="/assets/welcome/carrito.jpg";
+          console.log("se asigno imagen");
         } else {
-            return "<div id='o"+ nid +"' class='box-oferta'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='/assets/welcome/carrito.jpg'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+          var imageg=of.image_1;
+          console.log(imageg);
+        }
+        if (clase==1){
+            return "<div id='o"+ nid +"' class='box-oferta box-oferta2'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='"+ imageg +"'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
+        } else {
+            return "<div id='o"+ nid +"' class='box-oferta'><span class='of-price'>" + of.price + " S/. /mes</span><table><tr><td><img class='list-img' src='"+ imageg +"'/></td><td><p id='search-subt'><i class='fa fa-id-card'></i>"  + of.address +"</p><p>  <i class='fa fa-flag-o'></i>"  + of.days +"</p><p>  <i class='fa fa-map-marker'> " + of.location + "</p><table><tr><td id='idts'><div>Con techo</div></td><td id='idts'><div>Grande</div></td><td id='idts'><div>Control</div></td><td id='idts'><div></div></td></tr><tr><td id='idts'><div class='big-icon-search'><i class='fa fa-umbrella'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-taxi'></div></td><td id='idts'><div class='big-icon-search'><i class='fa fa-lock'></div></td><!--<td id='idts'> <button><a href='/search/estacionamiento'>Ver detalle</a></button></td>--></tr></table></td></tr></table></div><br>";
         }
     },
 
@@ -96,7 +104,7 @@ var GoogleMap = {
           var arrayampliado=[];
           arraytemporal.forEach( function(valor, indice, arreglo) {
             var distancia=Math.pow(Math.pow(cm.lat-valor.latitude,2)+Math.pow(cm.lng-valor.longitude,2),0.5);
-            arrayampliado.push({latitude: valor.latitude, longitude: valor.longitude, distance: distancia, location:"Cerca a tu casa", address: valor.address, price:valor.price, days:valor.days})
+            arrayampliado.push({latitude: valor.latitude, longitude: valor.longitude, distance: distancia, location:"Cerca a ti", address: valor.address, price:valor.price, days:valor.days, image_1:valor.image_1})
           }
           );
           arrayampliado=arrayampliado.sort(function (a, b) {
@@ -123,7 +131,11 @@ var GoogleMap = {
         	  var idstring="o"+numid;
         	  var michi="#"+idstring;
         	  marker.addListener('click', function() {
+        	    for (var i = 0; i < GoogleMap.painted.length; i++) {
+               $( GoogleMap.painted[i]).removeClass( "boxresaltado" );
+              }
         	    $( michi ).addClass( "boxresaltado" );
+        	    GoogleMap.painted.push(michi);
               document.getElementById(idstring).scrollIntoView();
             });
         	  GoogleMap.markers.push(marker);
