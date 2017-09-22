@@ -91,13 +91,19 @@
     position: absolute;
     width: 50%;
     text-align: center;
-    top: 30%;
+    top: 20%;
     @media all and (max-width: 700px) {
                         display: none;
                 }
 }
-
 .show-avatar{
+    max-width:70%;
+    height:auto;
+    width:auto/9;
+    margin:5px;
+    border-radius: 10px;
+}
+.show-avatar2{
         width: 160px;
         height: 160px;
         background-color: white;
