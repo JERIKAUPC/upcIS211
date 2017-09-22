@@ -1,4 +1,4 @@
-<h1>Mis Ofertas Reservadas</h1>
+<!-- <h1>Mis Ofertas Reservadas</h1>
 
 <% todo_deals=Deal.where("user_id=#{cookies[:userID]}") %>
 <% if todo_deals.size == 0 %>
@@ -23,3 +23,22 @@
     </table>
 </div>
 <% end %>
+-->
+
+<h1>Mis ofertas reservadas</h1>
+<div>
+<% if todo_deals.size == 0 %>
+<h2><%= "Aun no publicas ofertas" %></h2>
+<% else %>
+    <% todo_deals.each do |d| %>
+    <div class="pub-titulo <%= (d.canceled == 0) ? "cancelar" : "" %>"><%= d.offer.address %></div>
+    <p>Propietario: <%= d.offer.user.name%></p>
+    <!--<p>Direccion: <%=  d.offer.address %></p>-->
+    <p>Fecha de inicio: <%=  d.ini_date %></p>
+    <p>Fecha de fin: <%=  d.fin_date %></p>
+    <p>Cancelado: <%= (d.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
+    <hr>
+    <% end %>
+<% %>
+<% end %>
+</div>
