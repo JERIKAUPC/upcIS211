@@ -1,18 +1,27 @@
 .est-text {
     float: left;
-    width: 10%;
-    font-size: 100%;
+    font-size: 80%;
     color: black;
-    text-align: justify;
+    text-align:center;
 }
 
 .est-text2 {
-    float: left;
-    font-size: 80%;
+    float:left;
+    font-size:70%;
     color: grey;
-    text-align: justify;
+    text-align:center;
 }
 
 .est-win {
-    overflow: visible;
+    overflow:auto;
+}
+
+.table{
+    border-bottom: none;
+    font-weight: 600;
+    vertical-align: bottom;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
 }
