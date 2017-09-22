@@ -7,7 +7,7 @@
             <div class="est-text2"><%= offer.address %></div>
         </div>
         <div class="est-text">
-            <div>Cantidad</div>
+            <div>N° Cajones</div>
             <div class="est-text2"><%= offer.quantity %></div>
         </div>
         <div class="est-text">
@@ -20,7 +20,7 @@
         </div>
         <div class="est-text">
             <div>check in</div>
-            <div class="est-text2"><%  offer.check_in_time %></div>
+            <div class="est-text2"><%= offer.check_in_time %></div>
         </div>
         <div class="est-text">
             <div>Check out</div>
@@ -35,11 +35,11 @@
             <div class="est-text2"><%= offer.status %></div>
         </div>
         <div class="est-text">
-            <div>Tipo Propiedad</div>
+            <div>Propiedad</div>
             <div class="est-text2"><%= offer.property_type.name %></div>
         </div>
         <div class="est-text">
-            <div>Tipo Vehiculo</div>
+            <div>Vehiculo</div>
             <div class="est-text2"><%= offer.vehicle_type.name %></div>
         </div>
     <% end %>

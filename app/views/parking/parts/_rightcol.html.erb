@@ -1,6 +1,7 @@
+<% @Offers.each do |offer| %>
 <div class="est-rightcol">
     <div>
-        S./ 600
+        S./<%= offer.price %>
         Mensual
     </div>
     <div>Fecha de Inicio
@@ -16,8 +17,9 @@
     <div>
         <div>
             Total
-            S./600
+            <%= offer.price%>
         </div>
         <div><p align="center"><input type="button" align="centre" value="Solicitar"></p></div>
     </div>
+    <% end %>
 </div>

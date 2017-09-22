@@ -5,6 +5,7 @@ class ParkingController < ApplicationController
   before_action :authenticate, except: [:show]
   
   def show
+    @Offers = Offer.all
   end
 
   def new
