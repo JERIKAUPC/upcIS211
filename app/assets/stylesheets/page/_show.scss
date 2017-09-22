@@ -1,5 +1,5 @@
 .sp-input{
-    width:50%;
+    width:100%;
     border-radius: 5px;
     line-height: 20px;
     @media all and (max-width: 600px) {
@@ -24,12 +24,12 @@
         }
         
         input, select {
-            width:50%;
+            width:100%;
             border-radius: 5px;
             line-height: 20px;
             margin-bottom: 20px;
             @media all and (max-width: 900px) {
-                        width: 90%;
+                        width: 100%;
                 }
             @media all and (max-width: 500px) {
                         width: 100%;
@@ -72,4 +72,46 @@
     color: white;
     cursor: pointer;
     margin-bottom: 5px;
+}
+
+.show-cont{
+    position: relative;
+}
+
+.show-left{
+    width: 50%;
+    display: inline-block;
+    @media all and (max-width: 700px) {
+                        width: 100%;
+                }
+}
+
+.show-right{
+    display: inline-block;
+    position: absolute;
+    width: 50%;
+    text-align: center;
+    top: 30%;
+    @media all and (max-width: 700px) {
+                        display: none;
+                }
+}
+
+.show-avatar{
+        width: 160px;
+        height: 160px;
+        background-color: white;
+        border-style: ridge;
+        margin:5px;
+        border-radius: 10px;
+        @media all and (max-width: 870px) {
+                        width: 120px;
+                        height: 120px;
+                        margin:3px;
+                    }
+        @media all and (max-width: 415px) {
+                        width: 60px;
+                        height: 60px;
+                        margin:2px;
+                    }
 }

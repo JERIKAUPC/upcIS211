@@ -1,6 +1,7 @@
 <%- model_class = User -%>
 <% u=User.find(cookies[:userID]) %>
-
+<div class="show-cont">
+<div class="show-left">
 <form  class="sp-form" action="<%= api_v1_users_path() %>/<%= u.id %>" method="put">
     <div>
         <div class="sp-iconfield"><%= icon('user') %> Nombre completo</div>
@@ -52,5 +53,9 @@
         <div class="show-ok" id="ok"><%= icon("check") %> Datos actualizados!</div>
     </div>
 </form>
-
+</div>
+    <div class="show-right">
+        <img class=show-avatar src='<%= ((u.picture == "") or (u.picture == nil)) ? "/assets/welcome/usuario.png":"#{u.picture}" %>' />
+    </div>
+</div>
 
