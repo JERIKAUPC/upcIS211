@@ -2,21 +2,24 @@
 
 <% todo_deals=Deal.where("user_id=#{cookies[:userID]}") %>
 <% if todo_deals.size == 0 %>
-<%= "No tienes ofertas" %>
+    <%= "No tienes ofertas" %>
 <% else %>
 <h2><%= "Estas son tus ofertas"%></h2><br>
-<% end %>
-
-<% todo_deals.each do |d| %>
-<div style='border: solid 1px; padding: 5px; margin: 5px; display: inline-block; border-radius: 10px;'>
-<p>Propietario: <%= d.offer.user.name%></p>
-<p>Direccion: <%=  d.offer.address %></p>
-<p>Fecha de inicio: <%=  d.ini_date %></p>
-<p>Fecha de fin: <%=  d.fin_date %></p>
-<p>Cancelado: <%= (d.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
-
-<%= %>
-<%= %>
-<%= %>
+<div class="res-carrousel">
+    <table>
+        <tr>
+            <% todo_deals.each do |d| %>
+                <td>
+                    <div class="res-card">
+                        <p>Propietario: <%= d.offer.user.name%></p>
+                        <p>Direccion: <%=  d.offer.address %></p>
+                        <p>Fecha de inicio: <%=  d.ini_date %></p>
+                        <p>Fecha de fin: <%=  d.fin_date %></p>
+                        <p>Cancelado: <%= (d.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
+                    </div>
+                </td>
+            <% end %>
+        </tr>
+    </table>
 </div>
 <% end %>
