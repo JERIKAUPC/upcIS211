@@ -1,7 +1,7 @@
 <h1>Ofertas publicadas por mi</h1>
 <div>
 <% if @Offers.size == 0 %>
-<h2><%= "Aun no publicas ofertas" %></h2>
+<h3><%= "Aun no publicas ofertas" %></h3>
 <% else %>
     <% @Offers.each do |offer| %>
     <div class="pub-titulo"><%= offer.address %></div>

@@ -14,7 +14,8 @@ class ProfileController < ApplicationController
   end
 
   def order
-    #ofertas confirmadas Gabriel
+    @solicitados=Deal.all
+    contador=0
   end
 
   def publish
