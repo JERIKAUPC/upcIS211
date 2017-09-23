@@ -1,10 +1,11 @@
-<% @Offers.each do |offer| %>
+<%# @Offers.each do |offer| %>
+<% oferta = Offer.find(cookies[:offerID]) %>
 <div class="est-rightcol">
     <div>
-        S./<%= offer.price %>
+        S./<%= oferta.price %>
         Mensual
     </div>
-    <div>Fecha de Inicio
+    <!--<div>Fecha de Inicio
         <input type="date">
     </div>
     <div>
@@ -17,9 +18,10 @@
     <div>
         <div>
             Total
-            <%= offer.price%>
+            <%= oferta.price%>
         </div>
-        <div><p align="center"><input type="button" align="centre" value="Solicitar"></p></div>
-    </div>
-    <% end %>
+        
+    </div>-->
+    <div><p align="center"><input type="button" align="centre" value="Solicitar"></p></div>
+    <%# end %>
 </div>

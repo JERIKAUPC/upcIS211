@@ -2,14 +2,16 @@
     background: $color-purewhite;
      float:left;
      width:calc(100% - 320px);
-     padding:80px;
+     padding:5%;
+     border-style: solid;
 }
 
 .est-rightcol{
     background: $color-purewhite;
      float:right;
      width:300px;
-     padding:80px;
+     padding: 5%;
+     border-style: solid;
 }
 
 .est-icono{
@@ -31,4 +33,32 @@
     float:left;
     width:33.333333%;
     height:10%;
+}
+
+.est-img-doble{
+    max-width: 48%;
+    height: auto;
+    width: auto/9;
+    
+}
+
+.est-linea1{
+    background-color: grey;
+    text-align: center;
+}
+
+.est-titulo{
+    font-size: 150%;
+    position: relative;
+    font-weight: bold;
+}
+
+.est-dir{
+    
+}
+.est-valor{
+    position: absolute;
+    right: 5px;
+    color: gold;
+    text-align: right;
 }
