@@ -22,6 +22,10 @@
         </div>
         
     </div>-->
-    <div><p align="center"><input type="button" align="centre" value="Solicitar"></p></div>
+    <div><p align="center"><input type="button" align="center" value="Solicitar" onclick="save_deal()"></p></div>
+    <div class="show-error" id="error"><%= icon("times") %> Error</div>
+    <div class="show-load"  id="loading"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>Cargando...</div>
+    <div class="show-ok" id="ok"><%= icon("check") %> Datos actualizados!</div>
+    
     <%# end %>
 </div>

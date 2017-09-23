@@ -15,7 +15,18 @@ module Api
 
             # Método de creación de un vehiculo
             def create
-                deal = Deal.new(deal_params)
+                usuario = params[:user_id].to_i
+                oferta = params[:offer_id].to_i
+                ini = params[:in_date]
+                sal = params[:out_date]
+                parametros = {
+                    user_id: usuario,
+                    offer_id: oferta,
+                    ini_date: ini,
+                    fin_date: sal,
+                    canceled: 0
+                }
+                deal = Deal.new(parametros)
                 if deal.save
                     render json: {status: 'SUCCESS', message: 'Created vehicle', data:deal},status: :ok
                 else

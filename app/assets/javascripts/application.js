@@ -98,3 +98,27 @@ function setCookie(cname, cvalue, exdays) {
 function show_offer(n){
     setCookie("offerID",n,365);
 }
+
+function save_deal(){
+    var datosjs = {
+        user_id: getCookie("userID"),
+        offer_id: getCookie("offerID"),
+        in_date: "2017-09-22",
+        out_date: "2018-01-15"
+    };
+    var url="/api/v1/deals";
+    $.ajax({
+          type: "POST",
+          url: url,
+          data: datosjs,
+          success: function(response){
+              document.getElementById("loading").style.display = "none";
+              if (response.status == "SUCCESS") {
+                 document.getElementById("ok").style.display = "block"; 
+              } else {
+                  document.getElementById("error").style.display = "block";
+              }
+              
+          }
+      });
+}

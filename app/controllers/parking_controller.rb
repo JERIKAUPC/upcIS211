@@ -2,7 +2,7 @@ class ParkingController < ApplicationController
   layout 'only_header'
   include ApplicationHelper
   
-  before_action :authenticate, except: [:show]
+  before_action :authenticate#, except: [:show]
   
   def show
     @Offers = Offer.all
