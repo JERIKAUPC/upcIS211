@@ -9,7 +9,7 @@ module Api
             end
 
             def show
-                deal = Deals.find(params[:id])
+                deal = Deal.find(params[:id])
                 render json: {status: 'SUCCESS', message: 'Loaded vehicle', data:deal},status: :ok
             end
 
@@ -26,12 +26,18 @@ module Api
                     fin_date: sal,
                     canceled: 0
                 }
+                cantidad = Deal.find_by_sql("SELECT COUNT(*) as cantidad FROM deals WHERE offer_id=#{oferta}")
+                q = cantidad[0].cantidad
+            if q >= Offer.find(oferta).quantity
+                render json: {status: 'ERROR', message: 'Vehicle not saved', data:[{}]},status: :ok
+            else
                 deal = Deal.new(parametros)
                 if deal.save
                     render json: {status: 'SUCCESS', message: 'Created vehicle', data:deal},status: :ok
                 else
-                    render json: {status: 'ERROR', message: 'Vehicle not saved', data:deal},status: :unprocessable_entity
+                    render json: {status: 'ERROR', message: 'Vehicle not saved', data:[{}]},status: :unprocessable_entity
                 end
+            end
             end
 
             def destroy

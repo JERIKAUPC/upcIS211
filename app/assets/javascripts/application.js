@@ -179,16 +179,23 @@ function save_offer(){
           success: function(response){
               document.getElementById("loading").style.display = "none";
               if (response.status == "SUCCESS") {
-                 document.getElementById("ok").style.display = "block"; 
+                 document.getElementById("ok").style.display = "block";
+                 document.getElementById("error").style.display = "none";
               } else {
+                  document.getElementById("ok").style.display = "none";
                   document.getElementById("error").style.display = "block";
               }
               
           },
           error: function(response){
               document.getElementById("loading").style.display = "none";
+              document.getElementById("ok").style.display = "none";
               document.getElementById("error").style.display = "block";
           }
+      }).fail(function(jqXHR, textStatus, errorThrown){
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error").style.display = "block";
+        document.getElementById("ok").style.display = "none";
       });
     }
     
