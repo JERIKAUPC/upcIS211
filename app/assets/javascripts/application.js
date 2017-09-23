@@ -182,6 +182,10 @@ function save_offer(){
                   document.getElementById("error").style.display = "block";
               }
               
+          },
+          error: function(response){
+              document.getElementById("loading").style.display = "none";
+              document.getElementById("error").style.display = "block";
           }
       });
 
