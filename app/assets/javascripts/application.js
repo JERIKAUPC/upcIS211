@@ -122,3 +122,68 @@ function save_deal(){
           }
       });
 }
+
+
+function save_offer(){
+    var url="/api/v1/offers";
+    var user_id = getCookie("userID");
+    var address = document.forms[0]['address'].value;
+    var latitude = document.forms[0]['lat'].value;
+    var longitude = document.forms[0]['lng'].value;
+    var quantity = document.forms[0]['quantity'].value;
+    var days = document.forms[0]['days'].value;
+    var check_in_time = document.forms[0]['check_in_time'].value;
+    var check_out_time = document.forms[0]['check_out_time'].value;
+    var is_independent = document.forms[0]['is_independent'].value;
+    var leave_keys = document.forms[0]['leave_keys'].value;
+    var move_car = document.forms[0]['move_car'].value;
+    var image_1 = document.forms[0]['image_1'].value;
+    var image_2 = document.forms[0]['image_2'].value;
+    var image_entrance = document.forms[0]['image_entrance'].value;
+    var price = document.forms[0]['price'].value;
+    var access_form_id = document.forms[0]['access_form_id'].value;
+    var property_type_id = document.forms[0]['property_type_id'].value;
+    var vehicle_type_id = document.forms[0]['vehicle_type_id'].value;
+    
+    
+    var datosjs = {
+        user_id: user_id,
+        address: address,
+        latitude: latitude,
+        longitude: longitude,
+        quantity: quantity,
+        days: days,
+        check_in_time: check_in_time,
+        check_out_time: check_out_time,
+        is_independent: is_independent,
+        leave_keys: leave_keys,
+        move_car: move_car,
+        image_1: image_1,
+        image_2: image_2,
+        image_entrance: image_entrance,
+        price: price,
+        access_form_id: access_form_id,
+        property_type_id: property_type_id,
+        vehicle_type_id: vehicle_type_id
+        
+      };
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("error").style.display = "none";
+      document.getElementById("ok").style.display = "none";
+      $.ajax({
+          type: "POST",
+          url: url,
+          data: datosjs,
+          success: function(response){
+              document.getElementById("loading").style.display = "none";
+              if (response.status == "SUCCESS") {
+                 document.getElementById("ok").style.display = "block"; 
+              } else {
+                  document.getElementById("error").style.display = "block";
+              }
+              
+          }
+      });
+
+    
+}

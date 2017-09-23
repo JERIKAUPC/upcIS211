@@ -1,1 +1,136 @@
-<h1>Hola</h1>
+<div class="show-cont">
+<div class="show-left">
+
+<form  class="sp-form" action="/api/v1/deals" method="post">
+    <div>
+        <div class="sp-iconfield"><%= icon('university') %> Direccion</div>
+        <input class="sp-input" type="text" name="address" placeholder="av. ejemplo 123 San miguel" autocomplete="off">
+    </div>
+    <div>
+        <div><%= icon('map') %> Latitud</div>
+        <input type="text" name="lat" placeholder="Ejemplo: -12.047918" autocomplete="off">
+    </div>
+    <div>
+        <div><%= icon('map') %> Longitud</div>
+        <input type="text" name="lng" placeholder="Ejemplo: -77.041305" autocomplete="off">
+    </div>
+    <div>
+        <div><%= icon('calculator') %> Cantidad de lugares</div>
+        <input type="text" name="quantity" placeholder="Ejemplo: 2" autocomplete="off">
+    </div>
+    <div>
+        <div><%= icon('address-card') %> Dias disponibles</div>
+        <input type="text" name="days" placeholder="Ejemplo: Lunes-Martes-domingo" autocomplete="off" >
+    </div>
+    <div>
+        <div><%= icon('phone') %> Hora de ingreso</div>
+        <input type="text" name="check_in_time" placeholder="Ejemplo: 10:00:00" autocomplete="off" value="10:00:00" >
+    </div>
+     <div>
+        <div><%= icon('phone') %> Hora de salida</div>
+        <input type="text" name="check_out_time" placeholder="Ejemplo: 22:00:00" autocomplete="off" value="22:00:00">
+    </div>
+    <div>
+        <div><%= icon('venus-mars') %> Es privado?</div>
+        <select name="is_independent">
+            <option value="0" >
+                No
+            </option>
+            <option value="1" >
+                Si
+            </option>
+        </select>
+    </div>
+    <div>
+        <div><%= icon('venus-mars') %> Se entrega llaves?</div>
+        <select name="leave_keys">
+            <option value="0" >
+                No
+            </option>
+            <option value="1" >
+                Si
+            </option>
+        </select>
+    </div>
+    <div>
+        <div><%= icon('venus-mars') %> Tiene techo?</div>
+        <select name="move_car">
+            <option value="0" >
+                No
+            </option>
+            <option value="1" >
+                Si
+            </option>
+        </select>
+    </div>
+    <div>
+        <div><%= icon('image') %> Imagen 1</div>
+        <input type="text" name="image_1" placeholder="Direccion de la imagen" autocomplete="off" >
+    </div>
+    <div>
+        <div><%= icon('image') %> Imagen 2</div>
+        <input type="text" name="image_2" placeholder="Direccion de la imagen" autocomplete="off" >
+    </div>
+    <div>
+        <div><%= icon('image') %> Imagen de la entrada</div>
+        <input type="text" name="image_entrance" placeholder="Direccion de la imagen" autocomplete="off" >
+    </div>
+    <div>
+        <div><%= icon('image') %> Precio mensual</div>
+        <input type="text" name="price" placeholder="Precio mensual en soles" autocomplete="off" >
+    </div>
+    <div>
+        <% ingreso = AccessForm.all %>
+        <% contador = 1 %>
+        <div><%= icon('venus-mars') %> Forma de acceso</div>
+        <select name="access_form_id">
+            <% ingreso.each do |ing| %>
+            <option value="<%= contador %>" >
+                <%= ing.name %>
+            </option>
+            <% contador+=1 %>
+            <% end %>
+        </select>
+    </div>
+    <div>
+        <% ingreso = PropertyType.all %>
+        <% contador = 1 %>
+        <div><%= icon('venus-mars') %> Tipo de propiedad</div>
+        <select name="property_type_id">
+            <% ingreso.each do |ing| %>
+            <option value="<%= contador %>" >
+                <%= ing.name %>
+            </option>
+            <% contador+=1 %>
+            <% end %>
+        </select>
+    </div>
+    <div>
+        <% ingreso = VehicleType.all %>
+        <% contador = 1 %>
+        <div><%= icon('venus-mars') %> Tipo de propiedad</div>
+        <select name="vehicle_type_id">
+            <% ingreso.each do |ing| %>
+            <option value="<%= contador %>" >
+                <%= ing.name %>
+            </option>
+            <% contador+=1 %>
+            <% end %>
+        </select>
+    </div>
+    <div>
+        <div onclick="save_offer()">
+            <span class="show-boton">Update</span>
+        </div>
+        <div class="show-error" id="error"><%= icon("times") %> Error</div>
+        <div class="show-load"  id="loading"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>Salvando oferta...</div>
+        <div class="show-ok" id="ok"><%= icon("check") %> Gracias por su oferta!</div>
+    </div>
+</form>
+
+<!--</div>
+    <div class="show-right">
+        <img class=show-avatar src='<%#= ((u.picture == "") or (u.picture == nil)) ? "/assets/welcome/usuario.png":"#{u.picture}" %>' />
+    </div>
+</div>-->
+
