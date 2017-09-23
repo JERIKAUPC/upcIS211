@@ -145,7 +145,9 @@ function save_offer(){
     var property_type_id = document.forms[0]['property_type_id'].value;
     var vehicle_type_id = document.forms[0]['vehicle_type_id'].value;
     
-    
+    if ((address=="") || (latitude=="") || (longitude=="") || (quantity=="") || (price=="")){
+        alert("Todos los campos son obligatorios")
+    } else {
     var datosjs = {
         user_id: user_id,
         address: address,
@@ -188,6 +190,6 @@ function save_offer(){
               document.getElementById("error").style.display = "block";
           }
       });
-
+    }
     
 }
