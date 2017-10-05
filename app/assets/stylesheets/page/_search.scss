@@ -115,6 +115,7 @@
         background-color: white;
         border-style: ridge;
         margin:5px;
+        border-radius:5px;
         @media all and (max-width: 870px) {
                         width: 40px;
                         height: 40px;
@@ -133,7 +134,7 @@
         text-align:left;
         margin:0;
         display:inline-block;
-        background-color: $color-purewhite;
+        background-color: #dcc0c0;
         border-radius: 5px;
         padding:10px;
         position: relative;
@@ -147,14 +148,23 @@
                     }
          button {
                 border: 1px;
-                padding: 2px;
+                padding: 4px;
                 font-size: 95%;
                 color: white;
                 background-color: $color-blue;
-                border-radius: 2px;
+                border-radius: 5px;
                 a {
                     color: white;
                 }
+        }
+        button:hover{
+            background-color: black;
+            a {
+                    color: white;
+                }
+        }
+        table{
+            width: 100%;
         }
 
 }
