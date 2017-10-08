@@ -23,15 +23,15 @@
         <input type="text" name="days" placeholder="Ejemplo: Lunes-Martes-domingo" autocomplete="off" >
     </div>
     <div>
-        <div><%= icon('phone') %> Hora de ingreso</div>
+        <div><%= icon('tag') %> Hora de ingreso</div>
         <input type="text" name="check_in_time" placeholder="Ejemplo: 10:00:00" autocomplete="off" value="10:00:00" >
     </div>
      <div>
-        <div><%= icon('phone') %> Hora de salida</div>
+        <div><%= icon('tags') %> Hora de salida</div>
         <input type="text" name="check_out_time" placeholder="Ejemplo: 22:00:00" autocomplete="off" value="22:00:00">
     </div>
     <div>
-        <div><%= icon('venus-mars') %> Es privado?</div>
+        <div><%= icon('eye') %> Es privado?</div>
         <select name="is_independent">
             <option value="0" >
                 No
@@ -42,7 +42,7 @@
         </select>
     </div>
     <div>
-        <div><%= icon('venus-mars') %> Se entrega llaves?</div>
+        <div><%= icon('home') %> Se entrega llaves?</div>
         <select name="leave_keys">
             <option value="0" >
                 No
@@ -53,7 +53,7 @@
         </select>
     </div>
     <div>
-        <div><%= icon('venus-mars') %> Tiene techo?</div>
+        <div><%= icon('umbrella') %> Tiene techo?</div>
         <select name="move_car">
             <option value="0" >
                 No
@@ -76,13 +76,13 @@
         <input type="text" name="image_entrance" placeholder="Direccion de la imagen" autocomplete="off" >
     </div>
     <div>
-        <div><%= icon('image') %> Precio mensual</div>
+        <div><%= icon('money') %> Precio mensual</div>
         <input type="text" name="price" placeholder="Precio mensual en soles" autocomplete="off" required >
     </div>
     <div>
         <% ingreso = AccessForm.all %>
         <% contador = 1 %>
-        <div><%= icon('venus-mars') %> Forma de acceso</div>
+        <div><%= icon('key') %> Forma de acceso</div>
         <select name="access_form_id">
             <% ingreso.each do |ing| %>
             <option value="<%= contador %>" >
@@ -95,7 +95,7 @@
     <div>
         <% ingreso = PropertyType.all %>
         <% contador = 1 %>
-        <div><%= icon('venus-mars') %> Tipo de propiedad</div>
+        <div><%= icon('industry') %> Tipo de propiedad</div>
         <select name="property_type_id">
             <% ingreso.each do |ing| %>
             <option value="<%= contador %>" >
@@ -108,7 +108,7 @@
     <div>
         <% ingreso = VehicleType.all %>
         <% contador = 1 %>
-        <div><%= icon('venus-mars') %> Tipo de propiedad</div>
+        <div><%= icon('car') %> Tipo de Vehiculo</div>
         <select name="vehicle_type_id">
             <% ingreso.each do |ing| %>
             <option value="<%= contador %>" >
@@ -120,7 +120,7 @@
     </div>
     <div>
         <div onclick="save_offer()">
-            <span class="show-boton">Update</span>
+            <span class="show-boton" id="show-reg-boton">Registrar Oferta</span>
         </div>
         <div class="show-error" id="error"><%= icon("times") %> Error</div>
         <div class="show-load"  id="loading"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>Salvando oferta...</div>

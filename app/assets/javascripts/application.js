@@ -172,6 +172,7 @@ function save_offer(){
       document.getElementById("loading").style.display = "block";
       document.getElementById("error").style.display = "none";
       document.getElementById("ok").style.display = "none";
+      document.getElementById("show-reg-boton").style.display = "none";
       $.ajax({
           type: "POST",
           url: url,
@@ -184,6 +185,7 @@ function save_offer(){
               } else {
                   document.getElementById("ok").style.display = "none";
                   document.getElementById("error").style.display = "block";
+                  document.getElementById("show-reg-boton").style.display = "block";
               }
               
           },
@@ -196,6 +198,7 @@ function save_offer(){
         document.getElementById("loading").style.display = "none";
         document.getElementById("error").style.display = "block";
         document.getElementById("ok").style.display = "none";
+        document.getElementById("show-reg-boton").style.display = "block";
       });
     }
     
