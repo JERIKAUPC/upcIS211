@@ -1,31 +1,22 @@
-<%# @Offers.each do |offer| %>
 <% oferta = Offer.find(cookies[:offerID]) %>
 <div class="est-rightcol">
-    <div>
-        S./<%= oferta.price %>
-        Mensual
-    </div>
-    <!--<div>Fecha de Inicio
-        <input type="date">
+    <div class="est-sub-t">
+        <h3>Precio</h3>
     </div>
     <div>
-        Meses a reservar
-        <input type="text">
+        <%=icon('money') %> <%= oferta.price %>
+        Soles al mes
     </div>
-    <div>
-        por un mes
+    <br>
+    <div class="est-area-boton">
+        <p>
+            <div onclick="save_deal()">
+                <span class="show-boton" id="show-sol-boton">Solicitar</span>
+            </div>
+        </p>
     </div>
-    <div>
-        <div>
-            Total
-            <%= oferta.price%>
-        </div>
-        
-    </div>-->
-    <div><p align="center"><input type="button" align="center" value="Solicitar" onclick="save_deal()"></p></div>
     <div class="show-error" id="error"><%= icon("times") %> Error: Lo sentimos el lugar esta lleno</div>
     <div class="show-load"  id="loading"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>Cargando...</div>
     <div class="show-ok" id="ok"><%= icon("check") %> Gracias por reservar!</div>
     
-    <%# end %>
 </div>

@@ -107,6 +107,8 @@ function save_deal(){
         out_date: "2018-01-15"
     };
     var url="/api/v1/deals";
+    document.getElementById("show-sol-boton").style.display = "none";
+    document.getElementById("loading").style.display = "block";
     $.ajax({
           type: "POST",
           url: url,

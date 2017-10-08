@@ -1,17 +1,22 @@
 .est-leftcol{
-    background: $color-purewhite;
-     float:left;
-     width:calc(100% - 320px);
-     padding:5%;
-     border-style: solid;
+    //background: $color-blue;
+    float: left;
+    width: 65%;
+    padding: 5%;
+    //border-style: solid;
+    background-image: url("/assets/1x1.png");
+    
+    box-shadow: 4px 4px 10px #999;
 }
 
 .est-rightcol{
-    background: $color-purewhite;
-     float:right;
-     width:300px;
-     padding: 5%;
-     border-style: solid;
+    
+    float: right;
+    width: 30%;
+    padding: 5%;
+    background-color: white;
+    //background-image: url("/assets/1x1.png");
+    box-shadow: 4px 4px 10px #999;
 }
 
 .est-icono{
@@ -30,9 +35,10 @@
 }
 
 .est-carct{
-    float:left;
-    width:33.333333%;
-    height:10%;
+    float: left;
+    width: 33%;
+    height: 10%;
+    text-align: center;
 }
 
 .est-img-doble{
@@ -61,4 +67,34 @@
     right: 5px;
     color: gold;
     text-align: right;
+}
+
+.est-sub-t{
+    font-size: 130%;
+}
+
+.est-sub-cont{
+    width: 90%;
+    padding-left: 10%;
+    color: white;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.est-map-fondo{
+    position: absolute;
+    top: 75%;
+    left: 0px;
+    z-index: -100;
+    opacity: 0.30;
+}
+
+.est-verde{
+    i {
+     color: green;   
+    }
+}
+
+.est-area-boton{
+    text-align: center;
 }

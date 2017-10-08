@@ -1,18 +1,15 @@
-<%# @Offers.each do |offer| %>
 <% oferta = Offer.find(cookies[:offerID]) %>
-<!--<h1><%= cookies[:offerID] %></h1>
-<h2><%= oferta.user.name %></h2>-->
 <div class="est-leftcol">
     <div class="est-titulo">
-        <span class="est-dir"><%= oferta.address %></span><span class="est-valor"><%= icon('star') %></span>
+        <!--<span class="est-dir"><%= oferta.address %></span><span class="est-valor"><%= icon('star') %></span>-->
     </div>
     <br>
     <div class="est-linea1">
         <img class="est-img-doble" src="<%=oferta.image_1 %>" />
         <img class="est-img-doble" src="<%=oferta.image_2 %>" />
     </div>
-    <div><h3>Informacion Básica</h3></div>
-    <div>
+    <div class="est-sub-t"><h3>Informacion Básica</h3></div>
+    <div class="est-sub-cont">
         <div class="est-carct">
            <div class="est-icono"><%= oferta.move_car == 1 ? icon('umbrella') : icon('times') %></div>
            <div>Con Techo</div>
@@ -26,45 +23,32 @@
             <div>Control Automatico</div>
         </div>
     </div>
-    <div>
-        <h3>Vehiculos Aceptados</h3>
+    <br><br><br>
+    <br>
+    <div class="est-sub-t">
+        <h3>Tamaño de vehiculos Aceptados</h3>
     </div>
-    <div>
+    <div class="est-sub-cont">
         <div>
             <div class="est-icono"><il class="<%= oferta.vehicle_type.icon_class %>"></il></div>
             <div ><%= oferta.vehicle_type.name %></div>
         </div>
-        <!--<div class="est-carct">
-            <div class="est-icono"><%= icon('truck') %></div>
-           <div>Mediano</div>
-        </div>
-        <div class="est-carct">
-            <div class="est-icono"><%= icon('car') %></div>
-           <div>Pequeño</div>
-        </div>-->
     </div>
-    <div><h3>Disponibilidad</h3></div>
-    <div>
+    <div class="est-sub-t"><h3>Disponibilidad</h3></div>
+    <div  class="est-sub-cont">
         <div><%= oferta.days %></div>
-        <!--<div class="est-carct">Sabado</div>
-        <div class="est-carct">Domingo</div>-->
     </div>
-    <div><h3>Horario</h3></div>
-    <!--<div class="est-carct">
-        <div><%= icon('sun-o') %></div>
-        <div>Durante el dia</div>
-    </div>-->
-    <div>
+    <div class="est-sub-t"><h3>Horario</h3></div>
+    <div class="est-sub-cont">
         <div>Entrada</div>
         <div><%= oferta.check_in_time.to_s.split(/ /)[1] %></div>
     </div>
     <br>
-    <div>
+    <div class="est-sub-cont">
         <div>Salida</div>
         <div><%= oferta.check_out_time.to_s.split(/ /)[1] %></div>
     </div>
     
-    <div><h3>Propietario</h3></div>
-    <div class="est-icono"> <%= icon('check') %><%=oferta.user.name%></div>
-    <%# end %>
+    <div class="est-sub-t"><h3>Propietario</h3></div>
+    <div class="est-icono est-sub-cont est-verde"> <%= icon('check') %>  <%=oferta.user.name%></div>
 </div>
