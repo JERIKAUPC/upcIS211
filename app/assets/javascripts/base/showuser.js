@@ -19,6 +19,7 @@ function cargar_usuario(id_u){
 
 function cerrar_ficha() {
     $( "#dat-user" ).fadeOut("slow");
+    document.getElementById('dat-user-cont').innerHTML="<div class='ficha-spin'><i class='fa fa-spinner fa-spin fa-1x fa-fw'></i></div>";
 }
 
 function bloque_ficha(data){
@@ -27,7 +28,7 @@ function bloque_ficha(data){
     } else {
         var imagen=data.picture;
     }
-    return "<div class='tarjeta-datos'><p>Nombre: "+data.name+"</P><p>Nombre: "+data.phone+"</P><p>Correo: "+data.email+"</P></div><img class='show-avatar resize' src='"+imagen+"' />";
+    return "<div class='tarjeta-datos'><p>Nombre: "+data.name+"</P><p>Telefono: "+data.phone+"</P><p>Correo: "+data.email+"</P></div><img class='show-avatar resize' src='"+imagen+"' />";
 }
 
 function cambiar_estado(did,ea){
