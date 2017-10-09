@@ -148,6 +148,16 @@ function save_offer(){
     var property_type_id = document.forms[0]['property_type_id'].value;
     var vehicle_type_id = document.forms[0]['vehicle_type_id'].value;
     
+    if (parseInt(price) < 0){
+        alert("Ingrese un precio correcto");
+        return 0;
+    }
+    
+    if (parseInt(quantity) < 0){
+        alert("Ingrese una cantidad de lugares correcta");
+        return 0;
+    }
+    
     if ((address=="") || (latitude=="") || (longitude=="") || (quantity=="") || (price=="")){
         alert("Todos los campos son obligatorios")
     } else {

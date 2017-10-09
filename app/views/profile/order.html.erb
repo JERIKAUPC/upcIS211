@@ -12,7 +12,7 @@
     <% hora=deal.ini_date.to_s %>
     <% hora2=deal.fin_date.to_s %>
     <p><span>Horario: </span><span><%= deal.offer.check_in_time.to_s.split(" ")[1] %> a <%= deal.offer.check_out_time.to_s.split(" ")[1] %></span></p>
-    <p><span>Cacelado: </span>
+    <p><span>Cancelado: </span>
         <span id="est-cancelado<%= deal.id %>" class="barra-cancelado" onclick="cambiar_estado(<%= deal.id %>,<%=deal.canceled %>)">
         <%= (deal.canceled.to_i == 1) ? icon('check-square') : icon('square-o') %>
         </span>
