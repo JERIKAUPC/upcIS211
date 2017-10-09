@@ -28,13 +28,9 @@ var GoogleMap = {
           styles: [ { "elementType": "geometry", "stylers": [ { "color": "#ebe3cd" } ] }, { "elementType": "labels.text.fill", "stylers": [ { "color": "#523735" } ] }, { "elementType": "labels.text.stroke", "stylers": [ { "color": "#f5f1e6" } ] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [ { "color": "#c9b2a6" } ] }, { "featureType": "administrative.land_parcel", "elementType": "geometry.stroke", "stylers": [ { "color": "#dcd2be" } ] }, { "featureType": "administrative.land_parcel", "elementType": "labels.text.fill", "stylers": [ { "color": "#ae9e90" } ] }, { "featureType": "landscape.man_made", "elementType": "geometry.stroke", "stylers": [ { "color": "#b10a3c" } ] }, { "featureType": "landscape.natural", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "poi", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "poi", "elementType": "labels.text", "stylers": [ { "visibility": "off" } ] }, { "featureType": "poi", "elementType": "labels.text.fill", "stylers": [ { "color": "#93817c" } ] }, { "featureType": "poi.business", "stylers": [ { "visibility": "off" } ] }, { "featureType": "poi.park", "elementType": "geometry.fill", "stylers": [ { "color": "#a5b076" } ] }, { "featureType": "poi.park", "elementType": "labels.text.fill", "stylers": [ { "color": "#447530" } ] }, { "featureType": "road", "elementType": "geometry", "stylers": [ { "color": "#f5f1e6" } ] }, { "featureType": "road", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [ { "color": "#fdfcf8" } ] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [ { "color": "#f8c967" } ] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [ { "color": "#e9bc62" } ] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [ { "color": "#e98d58" } ] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [ { "color": "#db8555" } ] }, { "featureType": "road.local", "elementType": "labels.text.fill", "stylers": [ { "color": "#806b63" } ] }, { "featureType": "transit", "stylers": [ { "visibility": "off" } ] }, { "featureType": "transit.line", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "transit.line", "elementType": "labels.text.fill", "stylers": [ { "color": "#8f7d77" } ] }, { "featureType": "transit.line", "elementType": "labels.text.stroke", "stylers": [ { "color": "#ebe3cd" } ] }, { "featureType": "transit.station", "elementType": "geometry", "stylers": [ { "color": "#dfd2ae" } ] }, { "featureType": "water", "elementType": "geometry.fill", "stylers": [ { "color": "#b9d3c2" } ] }, { "featureType": "water", "elementType": "labels.text.fill", "stylers": [ { "color": "#92998d" } ] } ]
         });
 
-        //this.addMarker( this.center );
         this.inw = new google.maps.InfoWindow({map: this.obj});
         this.obj.addListener('center_changed', function(e) {
-          // 3 seconds after the center of the map has changed, pan back to the
-          // marker.
           window.setTimeout(GoogleMap.extdata(e), 3000);
-          
         }
         );
         this.conectarDB(this.inw,this.obj);
@@ -59,10 +55,8 @@ var GoogleMap = {
     plantilla: function (of,clase,nid){
         if ((of.image_1 == "") || (of.image_1 == null)){
           var imageg="/assets/welcome/carrito.jpg";
-          console.log("se asigno imagen");
         } else {
           var imageg=of.image_1;
-          console.log(imageg);
         }
         
         if (of.move_car == 1){
@@ -106,7 +100,6 @@ var GoogleMap = {
       if (GoogleMap.consult != null){
         GoogleMap.consult.abort();
         GoogleMap.consult=null;
-        console.log("Abortado");
       }
       GoogleMap.consult = $.getJSON(GoogleMap.urlser, datosjs, function(response){
           arraytemporal=response.data;
@@ -144,15 +137,11 @@ var GoogleMap = {
           });
           
           arraytemporal=arrayampliado;
-          console.log(cm);
-          console.log(arraytemporal);
           arraytemporal.forEach( function(valor, indice, arreglo) {
-          //var la =parseFloat(valor.location.split(",")[0]);
-          //var lo =parseFloat(valor.location.split(",")[1]);
+
           var la =valor.latitude;
           var lo =valor.longitude;
           
-          console.log(""+la+" "+lo+" contra: "+(cm.lat+dv)+" y "+(cm.lat-dv));
           if ( (la<cm.lat+dv) && (la>cm.lat-dv) && (lo<cm.lng+dh) && (lo>cm.lng-dh) ){
           	marker = new google.maps.Marker({
           		position: new google.maps.LatLng(la,lo),
@@ -205,15 +194,6 @@ var GoogleMap = {
     },
         
     conectarDB: function(inw,obj){
-      //var datosjs = {
-      //  user_id: 1
-      //};
-      
-      //var arraytemporal=[];
-    
-      //$.getJSON(GoogleMap.urlser, datosjs, function(response){
-        
-        //arraytemporal=response.data;
         //verificar centro
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -221,7 +201,6 @@ var GoogleMap = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            console.log(GoogleMap.center);
             inw.setPosition(GoogleMap.center);
             inw.setContent('Ud esta aqui!');
             obj.setCenter(GoogleMap.center);
@@ -245,17 +224,11 @@ var GoogleMap = {
         for (var i = 0; i < GoogleMap.grafico.length; i++) {
           GoogleMap.grafico[i].setMap(null);
         }
-        
-        
-        console.log(GoogleMap.grafico);
 
         GoogleMap.markers=[];
         GoogleMap.center ={lat: GoogleMap.obj.getCenter().lat() , lng: GoogleMap.obj.getCenter().lng() };
 
-        //$.getJSON(GoogleMap.urlser, datosjs, function(response){
-         // arraytemporal=response.data;
-          GoogleMap.ubicart();
-        //});
+        GoogleMap.ubicart();
        },
     
     handleLocationError: function (browserHasGeolocation, infoWindow, pos) {
