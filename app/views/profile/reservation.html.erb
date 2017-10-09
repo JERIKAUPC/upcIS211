@@ -1,44 +1,20 @@
-<!-- <h1>Mis Ofertas Reservadas</h1>
-
 <% todo_deals=Deal.where("user_id=#{cookies[:userID]}") %>
 <% if todo_deals.size == 0 %>
-    <%= "No tienes ofertas" %>
+    <h1><%= "No tienes ofertas" %></h1>
 <% else %>
-<h2><%= "Estas son tus ofertas"%></h2><br>
-<div class="res-carrousel">
-    <table>
-        <tr>
+    <h1>Mis ofertas reservadas</h1>
+    <div>
+        <% if todo_deals.size == 0 %>
+        <h2><%= "Aun no publicas ofertas" %></h2>
+        <% else %>
             <% todo_deals.each do |d| %>
-                <td>
-                    <div class="res-card">
-                        <p>Propietario: <%= d.offer.user.name%></p>
-                        <p>Direccion: <%=  d.offer.address %></p>
-                        <p>Fecha de inicio: <%=  d.ini_date %></p>
-                        <p>Fecha de fin: <%=  d.fin_date %></p>
-                        <p>Cancelado: <%= (d.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
-                    </div>
-                </td>
+                <div class="pub-titulo <%= (d.canceled.to_i == 0) ? "cancelar" : "" %>"><%= d.offer.address %></div>
+                <p>Propietario: <a class="a-user" onclick="cargar_usuario(<%= d.offer.user.id%>)"><%= d.offer.user.name%></a></p>
+                <p>Hora de entrada: <%=  d.offer.check_in_time.to_s.split(" ")[1] %> hrs</p>
+                <p>Hora de entrada: <%=  d.offer.check_out_time.to_s.split(" ")[1] %> hrs</p>
+                <p>Cancelado: <%= (d.canceled.to_i == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
+                <hr>
             <% end %>
-        </tr>
-    </table>
-</div>
+        <% end %>
+    </div>
 <% end %>
--->
-
-<h1>Mis ofertas reservadas</h1>
-<div>
-<% if todo_deals.size == 0 %>
-<h2><%= "Aun no publicas ofertas" %></h2>
-<% else %>
-    <% todo_deals.each do |d| %>
-    <div class="pub-titulo <%= (d.canceled == 0) ? "cancelar" : "" %>"><%= d.offer.address %></div>
-    <p>Propietario: <%= d.offer.user.name%></p>
-    <!--<p>Direccion: <%=  d.offer.address %></p>-->
-    <p>Fecha de inicio: <%=  d.ini_date %></p>
-    <p>Fecha de fin: <%=  d.fin_date %></p>
-    <p>Cancelado: <%= (d.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
-    <hr>
-    <% end %>
-<% %>
-<% end %>
-</div>

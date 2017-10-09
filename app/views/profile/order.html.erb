@@ -6,13 +6,20 @@
     <% if deal.offer.user_id.to_i == cookies[:userID].to_i %>
     <% contador+=1 %>
     <div class="pub-titulo"><%= deal.offer.address %></div>
-    <p>Cliente: <%= deal.user.name %></p>
+    <p>Cliente: <a class="a-user" onclick="cargar_usuario(<%= deal.user.id%>)"><%= deal.user.name%></a></p>
     <p><span>Numero de espacios: </span><span><%= deal.offer.quantity %></span></p>
     <p><span>Dias: </span><span><%= deal.offer.days %></span></p>
     <% hora=deal.ini_date.to_s %>
     <% hora2=deal.fin_date.to_s %>
-    <p><span>Fecha: </span><span><%= hora %> al <%= hora2 %></span></p>
-    <p><span>Estado: </span><span><%= (deal.canceled == 0) ? "Falta cancelar" : "Pagos al dia" %></p>
+    <p><span>Horario: </span><span><%= deal.offer.check_in_time.to_s.split(" ")[1] %> a <%= deal.offer.check_out_time.to_s.split(" ")[1] %></span></p>
+    <p><span>Cacelado: </span>
+        <span id="est-cancelado<%= deal.id %>" class="barra-cancelado" onclick="cambiar_estado(<%= deal.id %>,<%=deal.canceled %>)">
+        <%= (deal.canceled.to_i == 1) ? icon('check-square') : icon('square-o') %>
+        </span>
+        <span id="load-cancel<%= deal.id %>" class="load-cancel"> 
+            <i class='fa fa-spinner fa-spin fa-1x fa-fw'></i>
+        </span>
+    </p>
     <hr>
     <% end %>
     <% end %>
