@@ -18,6 +18,7 @@
 //= require base/popup
 //= require base/form
 //= require base/google-map
+//= require base/showuser
 
 $.ajaxSetup( {
     beforeSend: function ( xhr ) {

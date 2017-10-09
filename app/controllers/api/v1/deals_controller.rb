@@ -46,6 +46,16 @@ module Api
                 deal.destroy
                 render json: {status: 'SUCCESS', message: 'Vehicle Deleted', data:deal},status: :ok
             end
+            
+            def update
+                deal = Deal.find(params[:id])
+                if ( deal.update_attribute(:canceled, deal.canceled.to_i == 0 ? 1:0) )
+                    render json: {status: 'SUCCESS', message: 'Estado de oferta cambiado', data:deal},status: :ok
+                else
+                    puts deal.errors.full_messages
+                    render json: {status: 'ERROR', message: 'Estado no cambiado', data:deal},status: :unprocessable_entity
+                end
+            end
 
             private
             def deal_params
