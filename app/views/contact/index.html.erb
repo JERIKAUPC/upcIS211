@@ -8,47 +8,47 @@
     <li><%= icon('youtube')%>   Parking TV </li>
 </ul>
 <br>
-<!--
+
 <div>
    <p class="contact-subt">No tienes redes sociales? No importa... Aun podemos enviarte un e-mail</p>
         <div class="contact-fields">
-            <form>
+            <form action="/contact">
                 <table>
                     <tr>
                         <td>
-                            <%#= icon('user')%>
+                            <%= icon('user')%>
                         </td>
                         <td>
-                            <input type="text" placeholder="Nombre Completo"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <%#= icon('envelope')%>
-                        </td>
-                        <td>
-                            <input type="email" placeholder="Correo Electronico"/>
+                            <input type="text" name="nombre" placeholder="Nombre Completo"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <%#= icon('newspaper-o')%>
+                            <%= icon('envelope')%>
                         </td>
                         <td>
-                            <input type="text" placeholder="Asunto"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <%#= icon('pencil-square-o')%>
-                        </td>
-                        <td>
-                            <textarea class="contact-text" placeholder="Mensaje"></textarea>
+                            <input type="email" name="email" placeholder="Correo Electronico"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <%#= icon('share')%>
+                            <%= icon('newspaper-o')%>
+                        </td>
+                        <td>
+                            <input type="text" name="asunto" placeholder="Asunto"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= icon('pencil-square-o')%>
+                        </td>
+                        <td>
+                            <textarea class="contact-text" name="mensaje" placeholder="Mensaje"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%= icon('share')%>
                         </td>
                         <td>
                             <input type="submit"/>
@@ -58,4 +58,3 @@
             </form>
         </div>
 </div>
--->

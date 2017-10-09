@@ -10,4 +10,11 @@ class UserMailer < ApplicationMailer
         mail to: deal.offer.user.email, subject: "Uno de tus lugares ha sido solicitado!"
         
     end
+    
+    def contact ( nombre,email,asunto,mensaje )
+        @mensaje = mensaje
+        @nombre = nombre
+        @correo = email
+        mail to: "parking.pe@gmail.com", subject: asunto
+    end
 end
