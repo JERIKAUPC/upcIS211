@@ -1,13 +1,15 @@
 <% oferta = Offer.find(cookies[:offerID]) %>
 <div class="est-leftcol">
     <div class="est-titulo">
-        <!--<span class="est-dir"><%= oferta.address %></span><span class="est-valor"><%= icon('star') %></span>-->
+        <span class="est-dir"><%= oferta.address %></span><span class="est-valor"></span>
     </div>
     <br>
+    <hr>
     <div class="est-linea1">
         <img class="est-img-doble" src="<%=oferta.image_1 %>" />
         <img class="est-img-doble" src="<%=oferta.image_2 %>" />
     </div>
+    <hr>
     <div class="est-sub-t"><h3>Informacion Básica</h3></div>
     <div class="est-sub-cont">
         <div class="est-carct">
@@ -48,7 +50,7 @@
         <div>Salida</div>
         <div><%= oferta.check_out_time.to_s.split(/ /)[1] %></div>
     </div>
-    
+    <hr>
     <div class="est-sub-t"><h3>Propietario</h3></div>
     <div class="est-icono est-sub-cont est-verde"> <%= icon('check') %>  <%=oferta.user.name%></div>
 </div>

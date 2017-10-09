@@ -1,13 +1,21 @@
 <% oferta = Offer.find(cookies[:offerID]) %>
 <div class="est-rightcol">
     <div class="est-sub-t">
-        <h3>Precio</h3>
+        <h3>Confirmar Reserva</h3>
+    </div>
+    <hr>
+    <div><h3>Precio</h3></div>
+    <div>
+        <%=icon('money') %> <%= oferta.price %> Soles al mes
     </div>
     <div>
-        <%=icon('money') %> <%= oferta.price %>
-        Soles al mes
+        <h3>Dias a alquilar</h3>
+    </div>
+    <div>
+        <%=icon('calendar') %> <%= oferta.days %>
     </div>
     <br>
+    <hr>
     <div class="est-area-boton">
         <p>
             <div onclick="save_deal()">
