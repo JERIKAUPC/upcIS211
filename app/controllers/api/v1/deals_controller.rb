@@ -33,6 +33,7 @@ module Api
             else
                 deal = Deal.new(parametros)
                 if deal.save
+                    UserMailer.offertake(deal).deliver
                     render json: {status: 'SUCCESS', message: 'Created vehicle', data:deal},status: :ok
                 else
                     render json: {status: 'ERROR', message: 'Vehicle not saved', data:[{}]},status: :unprocessable_entity

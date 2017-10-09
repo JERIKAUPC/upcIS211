@@ -1,0 +1,19 @@
+<% deal = @deal %>
+<h1><%= deal.offer.user.name%> Han solicitado tu espacio!</h1>
+
+<p>
+ El usuario <%= deal.user.name %> ha pedido tu espacio en:
+</p>
+<p>
+<%= deal.offer.address %>
+</p>
+<p>
+Ponte en contacto con tu cliente!
+</p>
+<p>Telefono: <%= deal.user.phone %></p>
+<p>Telefono: <%= deal.user.email %></p>
+<br>
+Recureda que una vez cancelado el monto del alquiler, debes marcar como cancelado en la oferta.
+<br><br>
+<hr>
+El equipo de PARKING!
